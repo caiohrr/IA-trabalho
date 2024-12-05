@@ -161,8 +161,7 @@ void stagnation(solver &z3_solver, context &z3_context, short x, set<short> &nei
                 //        cout << elem << " ";
                 //cout << "\n";
 
-                // Negação da variável atual
-                expr curr_var = !z3_context.bool_const(("x_" + to_string(x)).c_str());
+                expr curr_var = z3_context.bool_const(("x_" + to_string(x)).c_str());
 
                 // Disjunção da negação do subconjunto de tamanho 2 atual
                 expr neg_disjunction = setDisjunction(z3_context, subset, true);
@@ -177,6 +176,41 @@ void stagnation(solver &z3_solver, context &z3_context, short x, set<short> &nei
         z3_solver.add(conjunction);
         cout << "Stagnation clause for " << "x_" << x << ":" << conjunction << "\n";
 }
+
+void preservation(solver &z3_solver, context &z3_context, short x, set<short> &neighbors) {
+
+        expr conjunction = z3_context.bool_val(true);
+
+        vector<vector<short>> subsets = generateSubsets(neighbors, 2);
+        for (auto &subset : subsets) {
+                vector<short> diff_set = {};
+                set_difference(neighbors.begin(), neighbors.end(),
+                               subset.begin(), subset.end(),
+                               inserter(diff_set, diff_set.begin()));
+
+                //cout << "set diff:\n";
+                //for (auto const &elem : diff_set)
+                //        cout << elem << " ";
+                //cout << "\n";
+
+                // Negação da variável atual
+                expr curr_var = !z3_context.bool_const(("x_" + to_string(x)).c_str());
+
+                // Disjunção da negação do subconjunto de tamanho 2 atual
+                expr neg_disjunction = setDisjunction(z3_context, subset, true);
+
+                // Disjunção da negação da diferença de todos os vizinhos e o subconjunto
+                // de tamanho 2 atual
+                expr diff_disjunction = setDisjunction(z3_context, diff_set, false);
+
+                // Junta por conjunção cada disjunção
+                conjunction = conjunction && (curr_var || neg_disjunction || diff_disjunction);
+        }
+        z3_solver.add(conjunction);
+        cout << "Preservation clause for " << "x_" << x << ":" << conjunction << "\n";
+}
+
+
 
 int main() {
 
@@ -209,7 +243,8 @@ int main() {
 
                         // Se a célula está viva
                         if (board[i][j] == 1) {
-                                cout << "life & preservation\n";
+                                preservation(z3_solver, z3_context, x, x_neighbors);
+                                //cout << "life & preservation\n";
                         } else {
                                 loneliness(z3_solver, z3_context, x, x_neighbors);
                                 stagnation(z3_solver, z3_context, x, x_neighbors);
