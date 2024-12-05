@@ -128,7 +128,7 @@ void loneliness(solver &z3_solver, context &z3_context, short x, set<short> &nei
                 conjunction = conjunction && disjunction;
         }
         z3_solver.add(conjunction);
-        cout << "Loneliness clause for " << "x_" << x << ":" << conjunction << "\n";
+        //cout << "Loneliness clause for " << "x_" << x << ":" << conjunction << "\n";
 }
 
 void overcrowding(solver &z3_solver, context &z3_context, short x, set<short> &neighbors) {
@@ -142,7 +142,7 @@ void overcrowding(solver &z3_solver, context &z3_context, short x, set<short> &n
                 conjunction = conjunction && neg_disjunction;
         }
         z3_solver.add(conjunction);
-        cout << "Overcrowding clause for " << "x_" << x << ":" << conjunction << "\n";
+        //cout << "Overcrowding clause for " << "x_" << x << ":" << conjunction << "\n";
 }
 
 void stagnation(solver &z3_solver, context &z3_context, short x, set<short> &neighbors) {
@@ -174,7 +174,7 @@ void stagnation(solver &z3_solver, context &z3_context, short x, set<short> &nei
                 conjunction = conjunction && (curr_var || neg_disjunction || diff_disjunction);
         }
         z3_solver.add(conjunction);
-        cout << "Stagnation clause for " << "x_" << x << ":" << conjunction << "\n";
+        //cout << "Stagnation clause for " << "x_" << x << ":" << conjunction << "\n";
 }
 
 void preservation(solver &z3_solver, context &z3_context, short x, set<short> &neighbors) {
@@ -207,7 +207,7 @@ void preservation(solver &z3_solver, context &z3_context, short x, set<short> &n
                 conjunction = conjunction && (curr_var || neg_disjunction || diff_disjunction);
         }
         z3_solver.add(conjunction);
-        cout << "Preservation clause for " << "x_" << x << ":" << conjunction << "\n";
+        //cout << "Preservation clause for " << "x_" << x << ":" << conjunction << "\n";
 }
 
 void life(solver &z3_solver, context &z3_context, short x, set<short> &neighbors) {
@@ -237,11 +237,8 @@ void life(solver &z3_solver, context &z3_context, short x, set<short> &neighbors
                 conjunction = conjunction && (neg_disjunction || diff_disjunction);
         }
         z3_solver.add(conjunction);
-        cout << "Life clause for " << "x_" << x << ":" << conjunction << "\n";
+        //cout << "Life clause for " << "x_" << x << ":" << conjunction << "\n";
 }
-
-
-
 
 
 int main() {
@@ -275,26 +272,35 @@ int main() {
 
                         // Se a célula está viva
                         if (board[i][j] == 1) {
-                                preservation(z3_solver, z3_context, x, x_neighbors);
-                                life(z3_solver, z3_context, x, x_neighbors);
-                                //cout << "life & preservation\n";
-                        } else {
                                 loneliness(z3_solver, z3_context, x, x_neighbors);
                                 stagnation(z3_solver, z3_context, x, x_neighbors);
                                 overcrowding(z3_solver, z3_context, x, x_neighbors);
+                        } else {
+
+                                preservation(z3_solver, z3_context, x, x_neighbors);
+                                life(z3_solver, z3_context, x, x_neighbors);
                         }
                 }
         }
 
         // Check satisfiability and print the result
-        if (z3_solver.check() == sat) {
+        while (z3_solver.check() == sat) {
                 cout << "SAT\n";
                 model z3_model = z3_solver.get_model();
 
                 printReconstructedBoard(variables, z3_model, rows, columns);
-        } else {
-                cout << "UNSAT\n";
+
+                // Create a blocking clause to find a different solution
+                expr block_clause = z3_context.bool_val(false);
+                for (const auto &var : variables) {
+                        expr value = z3_model.eval(var, true);
+                        block_clause = block_clause || (var != value);
+                }
+                z3_solver.add(block_clause);  // Add the blocking clause
+
         }
+
+        cout << "UNSAT\n";
 
         return 0;
 }
