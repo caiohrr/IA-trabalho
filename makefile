@@ -3,18 +3,18 @@ TARGET = reverseGof
 SRCDIR = ./src/
 INCDIR = ./include/
 
-CC = gcc
-CFILES = $(foreach D, $(SRCDIR), $(wildcard $(D)*.c))
-CFLAGS = -Wall -Wextra -pedantic -std=c99 -O0
+CC = g++
+CFILES = $(foreach D, $(SRCDIR), $(wildcard $(D)*.cpp))
+CFLAGS = -Wall -lz3
 LDFLAGS = $(foreach D, $(INCDIR), -I$(D))
-OBJFILES = $(patsubst %.c, %.o, $(CFILES))
+OBJFILES = $(patsubst %.cpp, %.o, $(CFILES))
 
 all: $(TARGET)
 
 $(TARGET) : $(OBJFILES)
 	$(CC) -o $@ $^ $(LDFLAGS)
 
-%.o : %.c
+%.o : %.cpp
 	$(CC) $(CFLAGS) $(LDFLAGS) -c -o $@ $^
 
 clean:
