@@ -26,6 +26,19 @@ void printShortBoard(const vector<vector<short>> &board, short rows, short colum
         }
 }
 
+// Função para imprimir o tabuleiro reconstruído com base nas valorações do SAT solver
+void printReconstructedBoard(const vector<expr>& variables, model& z3_model, short rows, short columns) {
+    size_t idx = 0;
+    for (short i = 0; i < rows; i++) {
+        for (short j = 0; j < columns; j++) {
+            expr value = z3_model.eval(variables[idx], true);  // Get the value of the variable from the model
+            cout << (value.bool_value() == Z3_L_TRUE ? 1 : 0) << " ";  // 1 if true, 0 if false
+            idx++;
+        }
+        cout << endl;
+    }
+}
+
 set<short> generateNeighborsSet(short i, short j, short rows, short columns) {
         set<short> neighbors;
 
@@ -153,11 +166,8 @@ int main() {
         if (z3_solver.check() == sat) {
                 cout << "SAT\n";
                 model z3_model = z3_solver.get_model();
-                // Extract and print the value for each variable
-                for (const auto& var : variables) {
-                        expr value = z3_model.eval(var, true);  // Get the value of the variable from the model
-                        cout << var << " = " << value << "\n";  // Print the variable and its assigned value
-                }
+
+                printReconstructedBoard(variables, z3_model, rows, columns);
         } else {
                 cout << "UNSAT\n";
         }
