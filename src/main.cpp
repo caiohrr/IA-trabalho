@@ -64,13 +64,18 @@ set<short> generateNeighborsSet(short i, short j, short rows, short columns) {
         return neighbors;
 }
 
-expr setDisjunction(context &z3_context, vector<short> &variables) {
+expr setDisjunction(context &z3_context, vector<short> &variables, bool negate) {
         expr_vector var_vector(z3_context);  // Inicializa o vetor com a expressão
 
         // Itera sobre o conjunto de variáveis
         for (const auto &var : variables) {
                 // Create uma variável boolean com o nome "x_{var}"
-                var_vector.push_back(z3_context.bool_const(("x_" + to_string(var)).c_str()));
+                expr curr_var = z3_context.bool_const(("x_" + to_string(var)).c_str());
+
+                if (negate) {
+                        curr_var = !curr_var;
+                }
+                var_vector.push_back(curr_var);
         }
 
         // Retorna a disjunção de todos os elementos do vetor
@@ -118,13 +123,28 @@ void loneliness(solver &z3_solver, context &z3_context, short x, set<short> &nei
 
         vector<vector<short>> subsets = generateSubsets(neighbors, 7);
         for (auto &subset : subsets) {
-                expr disjunction = setDisjunction(z3_context, subset);
+                expr disjunction = setDisjunction(z3_context, subset, false);
                 // Junta por conjunção cada disjunção
                 conjunction = conjunction && disjunction;
         }
         z3_solver.add(conjunction);
         cout << "Loneliness clause for " << "x_" << x << ":" << conjunction << "\n";
 }
+
+void overcrowding(solver &z3_solver, context &z3_context, short x, set<short> &neighbors) {
+
+        expr conjunction = z3_context.bool_val(true);
+
+        vector<vector<short>> subsets = generateSubsets(neighbors, 4);
+        for (auto &subset : subsets) {
+                expr disjunction = setDisjunction(z3_context, subset, true);
+                // Junta por conjunção cada disjunção
+                conjunction = conjunction && disjunction;
+        }
+        z3_solver.add(conjunction);
+        cout << "Overcrowding clause for " << "x_" << x << ":" << conjunction << "\n";
+}
+
 
 int main() {
 
@@ -158,6 +178,7 @@ int main() {
                         // Se a célula está viva
                         if (board[i][j] == 1) {
                                 loneliness(z3_solver, z3_context, x, x_neighbors);
+                                overcrowding(z3_solver, z3_context, x, x_neighbors);
                         }
                 }
         }
