@@ -1,0 +1,1161 @@
+0 1 2 3 4 5 
+4 5 6 7 8 9 
+8 9 10 11 12 13 
+12 13 14 15 16 17 
+set diff:
+5 
+set diff:
+4 
+set diff:
+1 
+Stagnation clause for x_0:(and true
+     (or (not x_0) (not x_1) (not x_4) x_5)
+     (or (not x_0) (not x_1) (not x_5) x_4)
+     (or (not x_0) (not x_4) (not x_5) x_1))
+Overcrowding clause for x_0:true
+set diff:
+4 5 6 
+set diff:
+2 5 6 
+set diff:
+2 4 6 
+set diff:
+2 4 5 
+set diff:
+0 5 6 
+set diff:
+0 4 6 
+set diff:
+0 4 5 
+set diff:
+0 2 6 
+set diff:
+0 2 5 
+set diff:
+0 2 4 
+Stagnation clause for x_1:(and true
+     (or (not x_1) (not x_0) (not x_2) x_4 x_5 x_6)
+     (or (not x_1) (not x_0) (not x_4) x_2 x_5 x_6)
+     (or (not x_1) (not x_0) (not x_5) x_2 x_4 x_6)
+     (or (not x_1) (not x_0) (not x_6) x_2 x_4 x_5)
+     (or (not x_1) (not x_2) (not x_4) x_0 x_5 x_6)
+     (or (not x_1) (not x_2) (not x_5) x_0 x_4 x_6)
+     (or (not x_1) (not x_2) (not x_6) x_0 x_4 x_5)
+     (or (not x_1) (not x_4) (not x_5) x_0 x_2 x_6)
+     (or (not x_1) (not x_4) (not x_6) x_0 x_2 x_5)
+     (or (not x_1) (not x_5) (not x_6) x_0 x_2 x_4))
+Overcrowding clause for x_1:(and true
+     (or (not x_0) (not x_2) (not x_4) (not x_5))
+     (or (not x_0) (not x_2) (not x_4) (not x_6))
+     (or (not x_0) (not x_2) (not x_5) (not x_6))
+     (or (not x_0) (not x_4) (not x_5) (not x_6))
+     (or (not x_2) (not x_4) (not x_5) (not x_6)))
+set diff:
+5 6 7 
+set diff:
+3 6 7 
+set diff:
+3 5 7 
+set diff:
+3 5 6 
+set diff:
+1 6 7 
+set diff:
+1 5 7 
+set diff:
+1 5 6 
+set diff:
+1 3 7 
+set diff:
+1 3 6 
+set diff:
+1 3 5 
+Stagnation clause for x_2:(and true
+     (or (not x_2) (not x_1) (not x_3) x_5 x_6 x_7)
+     (or (not x_2) (not x_1) (not x_5) x_3 x_6 x_7)
+     (or (not x_2) (not x_1) (not x_6) x_3 x_5 x_7)
+     (or (not x_2) (not x_1) (not x_7) x_3 x_5 x_6)
+     (or (not x_2) (not x_3) (not x_5) x_1 x_6 x_7)
+     (or (not x_2) (not x_3) (not x_6) x_1 x_5 x_7)
+     (or (not x_2) (not x_3) (not x_7) x_1 x_5 x_6)
+     (or (not x_2) (not x_5) (not x_6) x_1 x_3 x_7)
+     (or (not x_2) (not x_5) (not x_7) x_1 x_3 x_6)
+     (or (not x_2) (not x_6) (not x_7) x_1 x_3 x_5))
+Overcrowding clause for x_2:(and true
+     (or (not x_1) (not x_3) (not x_5) (not x_6))
+     (or (not x_1) (not x_3) (not x_5) (not x_7))
+     (or (not x_1) (not x_3) (not x_6) (not x_7))
+     (or (not x_1) (not x_5) (not x_6) (not x_7))
+     (or (not x_3) (not x_5) (not x_6) (not x_7)))
+set diff:
+6 7 8 
+set diff:
+4 7 8 
+set diff:
+4 6 8 
+set diff:
+4 6 7 
+set diff:
+2 7 8 
+set diff:
+2 6 8 
+set diff:
+2 6 7 
+set diff:
+2 4 8 
+set diff:
+2 4 7 
+set diff:
+2 4 6 
+Stagnation clause for x_3:(and true
+     (or (not x_3) (not x_2) (not x_4) x_6 x_7 x_8)
+     (or (not x_3) (not x_2) (not x_6) x_4 x_7 x_8)
+     (or (not x_3) (not x_2) (not x_7) x_4 x_6 x_8)
+     (or (not x_3) (not x_2) (not x_8) x_4 x_6 x_7)
+     (or (not x_3) (not x_4) (not x_6) x_2 x_7 x_8)
+     (or (not x_3) (not x_4) (not x_7) x_2 x_6 x_8)
+     (or (not x_3) (not x_4) (not x_8) x_2 x_6 x_7)
+     (or (not x_3) (not x_6) (not x_7) x_2 x_4 x_8)
+     (or (not x_3) (not x_6) (not x_8) x_2 x_4 x_7)
+     (or (not x_3) (not x_7) (not x_8) x_2 x_4 x_6))
+Overcrowding clause for x_3:(and true
+     (or (not x_2) (not x_4) (not x_6) (not x_7))
+     (or (not x_2) (not x_4) (not x_6) (not x_8))
+     (or (not x_2) (not x_4) (not x_7) (not x_8))
+     (or (not x_2) (not x_6) (not x_7) (not x_8))
+     (or (not x_4) (not x_6) (not x_7) (not x_8)))
+set diff:
+7 8 9 
+set diff:
+5 8 9 
+set diff:
+5 7 9 
+set diff:
+5 7 8 
+set diff:
+3 8 9 
+set diff:
+3 7 9 
+set diff:
+3 7 8 
+set diff:
+3 5 9 
+set diff:
+3 5 8 
+set diff:
+3 5 7 
+Stagnation clause for x_4:(and true
+     (or (not x_4) (not x_3) (not x_5) x_7 x_8 x_9)
+     (or (not x_4) (not x_3) (not x_7) x_5 x_8 x_9)
+     (or (not x_4) (not x_3) (not x_8) x_5 x_7 x_9)
+     (or (not x_4) (not x_3) (not x_9) x_5 x_7 x_8)
+     (or (not x_4) (not x_5) (not x_7) x_3 x_8 x_9)
+     (or (not x_4) (not x_5) (not x_8) x_3 x_7 x_9)
+     (or (not x_4) (not x_5) (not x_9) x_3 x_7 x_8)
+     (or (not x_4) (not x_7) (not x_8) x_3 x_5 x_9)
+     (or (not x_4) (not x_7) (not x_9) x_3 x_5 x_8)
+     (or (not x_4) (not x_8) (not x_9) x_3 x_5 x_7))
+Overcrowding clause for x_4:(and true
+     (or (not x_3) (not x_5) (not x_7) (not x_8))
+     (or (not x_3) (not x_5) (not x_7) (not x_9))
+     (or (not x_3) (not x_5) (not x_8) (not x_9))
+     (or (not x_3) (not x_7) (not x_8) (not x_9))
+     (or (not x_5) (not x_7) (not x_8) (not x_9)))
+set diff:
+9 
+set diff:
+8 
+set diff:
+4 
+Stagnation clause for x_5:(and true
+     (or (not x_5) (not x_4) (not x_8) x_9)
+     (or (not x_5) (not x_4) (not x_9) x_8)
+     (or (not x_5) (not x_8) (not x_9) x_4))
+Overcrowding clause for x_5:true
+set diff:
+5 8 9 
+set diff:
+1 8 9 
+set diff:
+1 5 9 
+set diff:
+1 5 8 
+set diff:
+0 8 9 
+set diff:
+0 5 9 
+set diff:
+0 5 8 
+set diff:
+0 1 9 
+set diff:
+0 1 8 
+set diff:
+0 1 5 
+Stagnation clause for x_4:(and true
+     (or (not x_4) (not x_0) (not x_1) x_5 x_8 x_9)
+     (or (not x_4) (not x_0) (not x_5) x_1 x_8 x_9)
+     (or (not x_4) (not x_0) (not x_8) x_1 x_5 x_9)
+     (or (not x_4) (not x_0) (not x_9) x_1 x_5 x_8)
+     (or (not x_4) (not x_1) (not x_5) x_0 x_8 x_9)
+     (or (not x_4) (not x_1) (not x_8) x_0 x_5 x_9)
+     (or (not x_4) (not x_1) (not x_9) x_0 x_5 x_8)
+     (or (not x_4) (not x_5) (not x_8) x_0 x_1 x_9)
+     (or (not x_4) (not x_5) (not x_9) x_0 x_1 x_8)
+     (or (not x_4) (not x_8) (not x_9) x_0 x_1 x_5))
+Overcrowding clause for x_4:(and true
+     (or (not x_0) (not x_1) (not x_5) (not x_8))
+     (or (not x_0) (not x_1) (not x_5) (not x_9))
+     (or (not x_0) (not x_1) (not x_8) (not x_9))
+     (or (not x_0) (not x_5) (not x_8) (not x_9))
+     (or (not x_1) (not x_5) (not x_8) (not x_9)))
+Loneliness clause for x_5:(and true
+     (or x_0 x_1 x_2 x_4 x_6 x_8 x_9)
+     (or x_0 x_1 x_2 x_4 x_6 x_8 x_10)
+     (or x_0 x_1 x_2 x_4 x_6 x_9 x_10)
+     (or x_0 x_1 x_2 x_4 x_8 x_9 x_10)
+     (or x_0 x_1 x_2 x_6 x_8 x_9 x_10)
+     (or x_0 x_1 x_4 x_6 x_8 x_9 x_10)
+     (or x_0 x_2 x_4 x_6 x_8 x_9 x_10)
+     (or x_1 x_2 x_4 x_6 x_8 x_9 x_10))
+set diff:
+2 4 6 8 9 10 
+set diff:
+1 4 6 8 9 10 
+set diff:
+1 2 6 8 9 10 
+set diff:
+1 2 4 8 9 10 
+set diff:
+1 2 4 6 9 10 
+set diff:
+1 2 4 6 8 10 
+set diff:
+1 2 4 6 8 9 
+set diff:
+0 4 6 8 9 10 
+set diff:
+0 2 6 8 9 10 
+set diff:
+0 2 4 8 9 10 
+set diff:
+0 2 4 6 9 10 
+set diff:
+0 2 4 6 8 10 
+set diff:
+0 2 4 6 8 9 
+set diff:
+0 1 6 8 9 10 
+set diff:
+0 1 4 8 9 10 
+set diff:
+0 1 4 6 9 10 
+set diff:
+0 1 4 6 8 10 
+set diff:
+0 1 4 6 8 9 
+set diff:
+0 1 2 8 9 10 
+set diff:
+0 1 2 6 9 10 
+set diff:
+0 1 2 6 8 10 
+set diff:
+0 1 2 6 8 9 
+set diff:
+0 1 2 4 9 10 
+set diff:
+0 1 2 4 8 10 
+set diff:
+0 1 2 4 8 9 
+set diff:
+0 1 2 4 6 10 
+set diff:
+0 1 2 4 6 9 
+set diff:
+0 1 2 4 6 8 
+Stagnation clause for x_5:(and true
+     (or (not x_5) (not x_0) (not x_1) x_2 x_4 x_6 x_8 x_9 x_10)
+     (or (not x_5) (not x_0) (not x_2) x_1 x_4 x_6 x_8 x_9 x_10)
+     (or (not x_5) (not x_0) (not x_4) x_1 x_2 x_6 x_8 x_9 x_10)
+     (or (not x_5) (not x_0) (not x_6) x_1 x_2 x_4 x_8 x_9 x_10)
+     (or (not x_5) (not x_0) (not x_8) x_1 x_2 x_4 x_6 x_9 x_10)
+     (or (not x_5) (not x_0) (not x_9) x_1 x_2 x_4 x_6 x_8 x_10)
+     (or (not x_5) (not x_0) (not x_10) x_1 x_2 x_4 x_6 x_8 x_9)
+     (or (not x_5) (not x_1) (not x_2) x_0 x_4 x_6 x_8 x_9 x_10)
+     (or (not x_5) (not x_1) (not x_4) x_0 x_2 x_6 x_8 x_9 x_10)
+     (or (not x_5) (not x_1) (not x_6) x_0 x_2 x_4 x_8 x_9 x_10)
+     (or (not x_5) (not x_1) (not x_8) x_0 x_2 x_4 x_6 x_9 x_10)
+     (or (not x_5) (not x_1) (not x_9) x_0 x_2 x_4 x_6 x_8 x_10)
+     (or (not x_5) (not x_1) (not x_10) x_0 x_2 x_4 x_6 x_8 x_9)
+     (or (not x_5) (not x_2) (not x_4) x_0 x_1 x_6 x_8 x_9 x_10)
+     (or (not x_5) (not x_2) (not x_6) x_0 x_1 x_4 x_8 x_9 x_10)
+     (or (not x_5) (not x_2) (not x_8) x_0 x_1 x_4 x_6 x_9 x_10)
+     (or (not x_5) (not x_2) (not x_9) x_0 x_1 x_4 x_6 x_8 x_10)
+     (or (not x_5) (not x_2) (not x_10) x_0 x_1 x_4 x_6 x_8 x_9)
+     (or (not x_5) (not x_4) (not x_6) x_0 x_1 x_2 x_8 x_9 x_10)
+     (or (not x_5) (not x_4) (not x_8) x_0 x_1 x_2 x_6 x_9 x_10)
+     (or (not x_5) (not x_4) (not x_9) x_0 x_1 x_2 x_6 x_8 x_10)
+     (or (not x_5) (not x_4) (not x_10) x_0 x_1 x_2 x_6 x_8 x_9)
+     (or (not x_5) (not x_6) (not x_8) x_0 x_1 x_2 x_4 x_9 x_10)
+     (or (not x_5) (not x_6) (not x_9) x_0 x_1 x_2 x_4 x_8 x_10)
+     (or (not x_5) (not x_6) (not x_10) x_0 x_1 x_2 x_4 x_8 x_9)
+     (or (not x_5) (not x_8) (not x_9) x_0 x_1 x_2 x_4 x_6 x_10)
+     (or (not x_5) (not x_8) (not x_10) x_0 x_1 x_2 x_4 x_6 x_9)
+     (or (not x_5) (not x_9) (not x_10) x_0 x_1 x_2 x_4 x_6 x_8))
+Overcrowding clause for x_5:(and true
+     (or (not x_0) (not x_1) (not x_2) (not x_4))
+     (or (not x_0) (not x_1) (not x_2) (not x_6))
+     (or (not x_0) (not x_1) (not x_2) (not x_8))
+     (or (not x_0) (not x_1) (not x_2) (not x_9))
+     (or (not x_0) (not x_1) (not x_2) (not x_10))
+     (or (not x_0) (not x_1) (not x_4) (not x_6))
+     (or (not x_0) (not x_1) (not x_4) (not x_8))
+     (or (not x_0) (not x_1) (not x_4) (not x_9))
+     (or (not x_0) (not x_1) (not x_4) (not x_10))
+     (or (not x_0) (not x_1) (not x_6) (not x_8))
+     (or (not x_0) (not x_1) (not x_6) (not x_9))
+     (or (not x_0) (not x_1) (not x_6) (not x_10))
+     (or (not x_0) (not x_1) (not x_8) (not x_9))
+     (or (not x_0) (not x_1) (not x_8) (not x_10))
+     (or (not x_0) (not x_1) (not x_9) (not x_10))
+     (or (not x_0) (not x_2) (not x_4) (not x_6))
+     (or (not x_0) (not x_2) (not x_4) (not x_8))
+     (or (not x_0) (not x_2) (not x_4) (not x_9))
+     (or (not x_0) (not x_2) (not x_4) (not x_10))
+     (or (not x_0) (not x_2) (not x_6) (not x_8))
+     (or (not x_0) (not x_2) (not x_6) (not x_9))
+     (or (not x_0) (not x_2) (not x_6) (not x_10))
+     (or (not x_0) (not x_2) (not x_8) (not x_9))
+     (or (not x_0) (not x_2) (not x_8) (not x_10))
+     (or (not x_0) (not x_2) (not x_9) (not x_10))
+     (or (not x_0) (not x_4) (not x_6) (not x_8))
+     (or (not x_0) (not x_4) (not x_6) (not x_9))
+     (or (not x_0) (not x_4) (not x_6) (not x_10))
+     (or (not x_0) (not x_4) (not x_8) (not x_9))
+     (or (not x_0) (not x_4) (not x_8) (not x_10))
+     (or (not x_0) (not x_4) (not x_9) (not x_10))
+     (or (not x_0) (not x_6) (not x_8) (not x_9))
+     (or (not x_0) (not x_6) (not x_8) (not x_10))
+     (or (not x_0) (not x_6) (not x_9) (not x_10))
+     (or (not x_0) (not x_8) (not x_9) (not x_10))
+     (or (not x_1) (not x_2) (not x_4) (not x_6))
+     (or (not x_1) (not x_2) (not x_4) (not x_8))
+     (or (not x_1) (not x_2) (not x_4) (not x_9))
+     (or (not x_1) (not x_2) (not x_4) (not x_10))
+     (or (not x_1) (not x_2) (not x_6) (not x_8))
+     (or (not x_1) (not x_2) (not x_6) (not x_9))
+     (or (not x_1) (not x_2) (not x_6) (not x_10))
+     (or (not x_1) (not x_2) (not x_8) (not x_9))
+     (or (not x_1) (not x_2) (not x_8) (not x_10))
+     (or (not x_1) (not x_2) (not x_9) (not x_10))
+     (or (not x_1) (not x_4) (not x_6) (not x_8))
+     (or (not x_1) (not x_4) (not x_6) (not x_9))
+     (or (not x_1) (not x_4) (not x_6) (not x_10))
+     (or (not x_1) (not x_4) (not x_8) (not x_9))
+     (or (not x_1) (not x_4) (not x_8) (not x_10))
+     (or (not x_1) (not x_4) (not x_9) (not x_10))
+     (or (not x_1) (not x_6) (not x_8) (not x_9))
+     (or (not x_1) (not x_6) (not x_8) (not x_10))
+     (or (not x_1) (not x_6) (not x_9) (not x_10))
+     (or (not x_1) (not x_8) (not x_9) (not x_10))
+     (or (not x_2) (not x_4) (not x_6) (not x_8))
+     (or (not x_2) (not x_4) (not x_6) (not x_9))
+     (or (not x_2) (not x_4) (not x_6) (not x_10))
+     (or (not x_2) (not x_4) (not x_8) (not x_9))
+     (or (not x_2) (not x_4) (not x_8) (not x_10))
+     (or (not x_2) (not x_4) (not x_9) (not x_10))
+     (or (not x_2) (not x_6) (not x_8) (not x_9))
+     (or (not x_2) (not x_6) (not x_8) (not x_10))
+     (or (not x_2) (not x_6) (not x_9) (not x_10))
+     (or (not x_2) (not x_8) (not x_9) (not x_10))
+     (or (not x_4) (not x_6) (not x_8) (not x_9))
+     (or (not x_4) (not x_6) (not x_8) (not x_10))
+     (or (not x_4) (not x_6) (not x_9) (not x_10))
+     (or (not x_4) (not x_8) (not x_9) (not x_10))
+     (or (not x_6) (not x_8) (not x_9) (not x_10)))
+life & preservation
+life & preservation
+Loneliness clause for x_8:(and true
+     (or x_3 x_4 x_5 x_7 x_9 x_11 x_12)
+     (or x_3 x_4 x_5 x_7 x_9 x_11 x_13)
+     (or x_3 x_4 x_5 x_7 x_9 x_12 x_13)
+     (or x_3 x_4 x_5 x_7 x_11 x_12 x_13)
+     (or x_3 x_4 x_5 x_9 x_11 x_12 x_13)
+     (or x_3 x_4 x_7 x_9 x_11 x_12 x_13)
+     (or x_3 x_5 x_7 x_9 x_11 x_12 x_13)
+     (or x_4 x_5 x_7 x_9 x_11 x_12 x_13))
+set diff:
+5 7 9 11 12 13 
+set diff:
+4 7 9 11 12 13 
+set diff:
+4 5 9 11 12 13 
+set diff:
+4 5 7 11 12 13 
+set diff:
+4 5 7 9 12 13 
+set diff:
+4 5 7 9 11 13 
+set diff:
+4 5 7 9 11 12 
+set diff:
+3 7 9 11 12 13 
+set diff:
+3 5 9 11 12 13 
+set diff:
+3 5 7 11 12 13 
+set diff:
+3 5 7 9 12 13 
+set diff:
+3 5 7 9 11 13 
+set diff:
+3 5 7 9 11 12 
+set diff:
+3 4 9 11 12 13 
+set diff:
+3 4 7 11 12 13 
+set diff:
+3 4 7 9 12 13 
+set diff:
+3 4 7 9 11 13 
+set diff:
+3 4 7 9 11 12 
+set diff:
+3 4 5 11 12 13 
+set diff:
+3 4 5 9 12 13 
+set diff:
+3 4 5 9 11 13 
+set diff:
+3 4 5 9 11 12 
+set diff:
+3 4 5 7 12 13 
+set diff:
+3 4 5 7 11 13 
+set diff:
+3 4 5 7 11 12 
+set diff:
+3 4 5 7 9 13 
+set diff:
+3 4 5 7 9 12 
+set diff:
+3 4 5 7 9 11 
+Stagnation clause for x_8:(and true
+     (or (not x_8) (not x_3) (not x_4) x_5 x_7 x_9 x_11 x_12 x_13)
+     (or (not x_8) (not x_3) (not x_5) x_4 x_7 x_9 x_11 x_12 x_13)
+     (or (not x_8) (not x_3) (not x_7) x_4 x_5 x_9 x_11 x_12 x_13)
+     (or (not x_8) (not x_3) (not x_9) x_4 x_5 x_7 x_11 x_12 x_13)
+     (or (not x_8) (not x_3) (not x_11) x_4 x_5 x_7 x_9 x_12 x_13)
+     (or (not x_8) (not x_3) (not x_12) x_4 x_5 x_7 x_9 x_11 x_13)
+     (or (not x_8) (not x_3) (not x_13) x_4 x_5 x_7 x_9 x_11 x_12)
+     (or (not x_8) (not x_4) (not x_5) x_3 x_7 x_9 x_11 x_12 x_13)
+     (or (not x_8) (not x_4) (not x_7) x_3 x_5 x_9 x_11 x_12 x_13)
+     (or (not x_8) (not x_4) (not x_9) x_3 x_5 x_7 x_11 x_12 x_13)
+     (or (not x_8) (not x_4) (not x_11) x_3 x_5 x_7 x_9 x_12 x_13)
+     (or (not x_8) (not x_4) (not x_12) x_3 x_5 x_7 x_9 x_11 x_13)
+     (or (not x_8) (not x_4) (not x_13) x_3 x_5 x_7 x_9 x_11 x_12)
+     (or (not x_8) (not x_5) (not x_7) x_3 x_4 x_9 x_11 x_12 x_13)
+     (or (not x_8) (not x_5) (not x_9) x_3 x_4 x_7 x_11 x_12 x_13)
+     (or (not x_8) (not x_5) (not x_11) x_3 x_4 x_7 x_9 x_12 x_13)
+     (or (not x_8) (not x_5) (not x_12) x_3 x_4 x_7 x_9 x_11 x_13)
+     (or (not x_8) (not x_5) (not x_13) x_3 x_4 x_7 x_9 x_11 x_12)
+     (or (not x_8) (not x_7) (not x_9) x_3 x_4 x_5 x_11 x_12 x_13)
+     (or (not x_8) (not x_7) (not x_11) x_3 x_4 x_5 x_9 x_12 x_13)
+     (or (not x_8) (not x_7) (not x_12) x_3 x_4 x_5 x_9 x_11 x_13)
+     (or (not x_8) (not x_7) (not x_13) x_3 x_4 x_5 x_9 x_11 x_12)
+     (or (not x_8) (not x_9) (not x_11) x_3 x_4 x_5 x_7 x_12 x_13)
+     (or (not x_8) (not x_9) (not x_12) x_3 x_4 x_5 x_7 x_11 x_13)
+     (or (not x_8) (not x_9) (not x_13) x_3 x_4 x_5 x_7 x_11 x_12)
+     (or (not x_8) (not x_11) (not x_12) x_3 x_4 x_5 x_7 x_9 x_13)
+     (or (not x_8) (not x_11) (not x_13) x_3 x_4 x_5 x_7 x_9 x_12)
+     (or (not x_8) (not x_12) (not x_13) x_3 x_4 x_5 x_7 x_9 x_11))
+Overcrowding clause for x_8:(and true
+     (or (not x_3) (not x_4) (not x_5) (not x_7))
+     (or (not x_3) (not x_4) (not x_5) (not x_9))
+     (or (not x_3) (not x_4) (not x_5) (not x_11))
+     (or (not x_3) (not x_4) (not x_5) (not x_12))
+     (or (not x_3) (not x_4) (not x_5) (not x_13))
+     (or (not x_3) (not x_4) (not x_7) (not x_9))
+     (or (not x_3) (not x_4) (not x_7) (not x_11))
+     (or (not x_3) (not x_4) (not x_7) (not x_12))
+     (or (not x_3) (not x_4) (not x_7) (not x_13))
+     (or (not x_3) (not x_4) (not x_9) (not x_11))
+     (or (not x_3) (not x_4) (not x_9) (not x_12))
+     (or (not x_3) (not x_4) (not x_9) (not x_13))
+     (or (not x_3) (not x_4) (not x_11) (not x_12))
+     (or (not x_3) (not x_4) (not x_11) (not x_13))
+     (or (not x_3) (not x_4) (not x_12) (not x_13))
+     (or (not x_3) (not x_5) (not x_7) (not x_9))
+     (or (not x_3) (not x_5) (not x_7) (not x_11))
+     (or (not x_3) (not x_5) (not x_7) (not x_12))
+     (or (not x_3) (not x_5) (not x_7) (not x_13))
+     (or (not x_3) (not x_5) (not x_9) (not x_11))
+     (or (not x_3) (not x_5) (not x_9) (not x_12))
+     (or (not x_3) (not x_5) (not x_9) (not x_13))
+     (or (not x_3) (not x_5) (not x_11) (not x_12))
+     (or (not x_3) (not x_5) (not x_11) (not x_13))
+     (or (not x_3) (not x_5) (not x_12) (not x_13))
+     (or (not x_3) (not x_7) (not x_9) (not x_11))
+     (or (not x_3) (not x_7) (not x_9) (not x_12))
+     (or (not x_3) (not x_7) (not x_9) (not x_13))
+     (or (not x_3) (not x_7) (not x_11) (not x_12))
+     (or (not x_3) (not x_7) (not x_11) (not x_13))
+     (or (not x_3) (not x_7) (not x_12) (not x_13))
+     (or (not x_3) (not x_9) (not x_11) (not x_12))
+     (or (not x_3) (not x_9) (not x_11) (not x_13))
+     (or (not x_3) (not x_9) (not x_12) (not x_13))
+     (or (not x_3) (not x_11) (not x_12) (not x_13))
+     (or (not x_4) (not x_5) (not x_7) (not x_9))
+     (or (not x_4) (not x_5) (not x_7) (not x_11))
+     (or (not x_4) (not x_5) (not x_7) (not x_12))
+     (or (not x_4) (not x_5) (not x_7) (not x_13))
+     (or (not x_4) (not x_5) (not x_9) (not x_11))
+     (or (not x_4) (not x_5) (not x_9) (not x_12))
+     (or (not x_4) (not x_5) (not x_9) (not x_13))
+     (or (not x_4) (not x_5) (not x_11) (not x_12))
+     (or (not x_4) (not x_5) (not x_11) (not x_13))
+     (or (not x_4) (not x_5) (not x_12) (not x_13))
+     (or (not x_4) (not x_7) (not x_9) (not x_11))
+     (or (not x_4) (not x_7) (not x_9) (not x_12))
+     (or (not x_4) (not x_7) (not x_9) (not x_13))
+     (or (not x_4) (not x_7) (not x_11) (not x_12))
+     (or (not x_4) (not x_7) (not x_11) (not x_13))
+     (or (not x_4) (not x_7) (not x_12) (not x_13))
+     (or (not x_4) (not x_9) (not x_11) (not x_12))
+     (or (not x_4) (not x_9) (not x_11) (not x_13))
+     (or (not x_4) (not x_9) (not x_12) (not x_13))
+     (or (not x_4) (not x_11) (not x_12) (not x_13))
+     (or (not x_5) (not x_7) (not x_9) (not x_11))
+     (or (not x_5) (not x_7) (not x_9) (not x_12))
+     (or (not x_5) (not x_7) (not x_9) (not x_13))
+     (or (not x_5) (not x_7) (not x_11) (not x_12))
+     (or (not x_5) (not x_7) (not x_11) (not x_13))
+     (or (not x_5) (not x_7) (not x_12) (not x_13))
+     (or (not x_5) (not x_9) (not x_11) (not x_12))
+     (or (not x_5) (not x_9) (not x_11) (not x_13))
+     (or (not x_5) (not x_9) (not x_12) (not x_13))
+     (or (not x_5) (not x_11) (not x_12) (not x_13))
+     (or (not x_7) (not x_9) (not x_11) (not x_12))
+     (or (not x_7) (not x_9) (not x_11) (not x_13))
+     (or (not x_7) (not x_9) (not x_12) (not x_13))
+     (or (not x_7) (not x_11) (not x_12) (not x_13))
+     (or (not x_9) (not x_11) (not x_12) (not x_13)))
+set diff:
+8 12 13 
+set diff:
+5 12 13 
+set diff:
+5 8 13 
+set diff:
+5 8 12 
+set diff:
+4 12 13 
+set diff:
+4 8 13 
+set diff:
+4 8 12 
+set diff:
+4 5 13 
+set diff:
+4 5 12 
+set diff:
+4 5 8 
+Stagnation clause for x_9:(and true
+     (or (not x_9) (not x_4) (not x_5) x_8 x_12 x_13)
+     (or (not x_9) (not x_4) (not x_8) x_5 x_12 x_13)
+     (or (not x_9) (not x_4) (not x_12) x_5 x_8 x_13)
+     (or (not x_9) (not x_4) (not x_13) x_5 x_8 x_12)
+     (or (not x_9) (not x_5) (not x_8) x_4 x_12 x_13)
+     (or (not x_9) (not x_5) (not x_12) x_4 x_8 x_13)
+     (or (not x_9) (not x_5) (not x_13) x_4 x_8 x_12)
+     (or (not x_9) (not x_8) (not x_12) x_4 x_5 x_13)
+     (or (not x_9) (not x_8) (not x_13) x_4 x_5 x_12)
+     (or (not x_9) (not x_12) (not x_13) x_4 x_5 x_8))
+Overcrowding clause for x_9:(and true
+     (or (not x_4) (not x_5) (not x_8) (not x_12))
+     (or (not x_4) (not x_5) (not x_8) (not x_13))
+     (or (not x_4) (not x_5) (not x_12) (not x_13))
+     (or (not x_4) (not x_8) (not x_12) (not x_13))
+     (or (not x_5) (not x_8) (not x_12) (not x_13)))
+set diff:
+9 12 13 
+set diff:
+5 12 13 
+set diff:
+5 9 13 
+set diff:
+5 9 12 
+set diff:
+4 12 13 
+set diff:
+4 9 13 
+set diff:
+4 9 12 
+set diff:
+4 5 13 
+set diff:
+4 5 12 
+set diff:
+4 5 9 
+Stagnation clause for x_8:(and true
+     (or (not x_8) (not x_4) (not x_5) x_9 x_12 x_13)
+     (or (not x_8) (not x_4) (not x_9) x_5 x_12 x_13)
+     (or (not x_8) (not x_4) (not x_12) x_5 x_9 x_13)
+     (or (not x_8) (not x_4) (not x_13) x_5 x_9 x_12)
+     (or (not x_8) (not x_5) (not x_9) x_4 x_12 x_13)
+     (or (not x_8) (not x_5) (not x_12) x_4 x_9 x_13)
+     (or (not x_8) (not x_5) (not x_13) x_4 x_9 x_12)
+     (or (not x_8) (not x_9) (not x_12) x_4 x_5 x_13)
+     (or (not x_8) (not x_9) (not x_13) x_4 x_5 x_12)
+     (or (not x_8) (not x_12) (not x_13) x_4 x_5 x_9))
+Overcrowding clause for x_8:(and true
+     (or (not x_4) (not x_5) (not x_9) (not x_12))
+     (or (not x_4) (not x_5) (not x_9) (not x_13))
+     (or (not x_4) (not x_5) (not x_12) (not x_13))
+     (or (not x_4) (not x_9) (not x_12) (not x_13))
+     (or (not x_5) (not x_9) (not x_12) (not x_13)))
+Loneliness clause for x_9:(and true
+     (or x_4 x_5 x_6 x_8 x_10 x_12 x_13)
+     (or x_4 x_5 x_6 x_8 x_10 x_12 x_14)
+     (or x_4 x_5 x_6 x_8 x_10 x_13 x_14)
+     (or x_4 x_5 x_6 x_8 x_12 x_13 x_14)
+     (or x_4 x_5 x_6 x_10 x_12 x_13 x_14)
+     (or x_4 x_5 x_8 x_10 x_12 x_13 x_14)
+     (or x_4 x_6 x_8 x_10 x_12 x_13 x_14)
+     (or x_5 x_6 x_8 x_10 x_12 x_13 x_14))
+set diff:
+6 8 10 12 13 14 
+set diff:
+5 8 10 12 13 14 
+set diff:
+5 6 10 12 13 14 
+set diff:
+5 6 8 12 13 14 
+set diff:
+5 6 8 10 13 14 
+set diff:
+5 6 8 10 12 14 
+set diff:
+5 6 8 10 12 13 
+set diff:
+4 8 10 12 13 14 
+set diff:
+4 6 10 12 13 14 
+set diff:
+4 6 8 12 13 14 
+set diff:
+4 6 8 10 13 14 
+set diff:
+4 6 8 10 12 14 
+set diff:
+4 6 8 10 12 13 
+set diff:
+4 5 10 12 13 14 
+set diff:
+4 5 8 12 13 14 
+set diff:
+4 5 8 10 13 14 
+set diff:
+4 5 8 10 12 14 
+set diff:
+4 5 8 10 12 13 
+set diff:
+4 5 6 12 13 14 
+set diff:
+4 5 6 10 13 14 
+set diff:
+4 5 6 10 12 14 
+set diff:
+4 5 6 10 12 13 
+set diff:
+4 5 6 8 13 14 
+set diff:
+4 5 6 8 12 14 
+set diff:
+4 5 6 8 12 13 
+set diff:
+4 5 6 8 10 14 
+set diff:
+4 5 6 8 10 13 
+set diff:
+4 5 6 8 10 12 
+Stagnation clause for x_9:(and true
+     (or (not x_9) (not x_4) (not x_5) x_6 x_8 x_10 x_12 x_13 x_14)
+     (or (not x_9) (not x_4) (not x_6) x_5 x_8 x_10 x_12 x_13 x_14)
+     (or (not x_9) (not x_4) (not x_8) x_5 x_6 x_10 x_12 x_13 x_14)
+     (or (not x_9) (not x_4) (not x_10) x_5 x_6 x_8 x_12 x_13 x_14)
+     (or (not x_9) (not x_4) (not x_12) x_5 x_6 x_8 x_10 x_13 x_14)
+     (or (not x_9) (not x_4) (not x_13) x_5 x_6 x_8 x_10 x_12 x_14)
+     (or (not x_9) (not x_4) (not x_14) x_5 x_6 x_8 x_10 x_12 x_13)
+     (or (not x_9) (not x_5) (not x_6) x_4 x_8 x_10 x_12 x_13 x_14)
+     (or (not x_9) (not x_5) (not x_8) x_4 x_6 x_10 x_12 x_13 x_14)
+     (or (not x_9) (not x_5) (not x_10) x_4 x_6 x_8 x_12 x_13 x_14)
+     (or (not x_9) (not x_5) (not x_12) x_4 x_6 x_8 x_10 x_13 x_14)
+     (or (not x_9) (not x_5) (not x_13) x_4 x_6 x_8 x_10 x_12 x_14)
+     (or (not x_9) (not x_5) (not x_14) x_4 x_6 x_8 x_10 x_12 x_13)
+     (or (not x_9) (not x_6) (not x_8) x_4 x_5 x_10 x_12 x_13 x_14)
+     (or (not x_9) (not x_6) (not x_10) x_4 x_5 x_8 x_12 x_13 x_14)
+     (or (not x_9) (not x_6) (not x_12) x_4 x_5 x_8 x_10 x_13 x_14)
+     (or (not x_9) (not x_6) (not x_13) x_4 x_5 x_8 x_10 x_12 x_14)
+     (or (not x_9) (not x_6) (not x_14) x_4 x_5 x_8 x_10 x_12 x_13)
+     (or (not x_9) (not x_8) (not x_10) x_4 x_5 x_6 x_12 x_13 x_14)
+     (or (not x_9) (not x_8) (not x_12) x_4 x_5 x_6 x_10 x_13 x_14)
+     (or (not x_9) (not x_8) (not x_13) x_4 x_5 x_6 x_10 x_12 x_14)
+     (or (not x_9) (not x_8) (not x_14) x_4 x_5 x_6 x_10 x_12 x_13)
+     (or (not x_9) (not x_10) (not x_12) x_4 x_5 x_6 x_8 x_13 x_14)
+     (or (not x_9) (not x_10) (not x_13) x_4 x_5 x_6 x_8 x_12 x_14)
+     (or (not x_9) (not x_10) (not x_14) x_4 x_5 x_6 x_8 x_12 x_13)
+     (or (not x_9) (not x_12) (not x_13) x_4 x_5 x_6 x_8 x_10 x_14)
+     (or (not x_9) (not x_12) (not x_14) x_4 x_5 x_6 x_8 x_10 x_13)
+     (or (not x_9) (not x_13) (not x_14) x_4 x_5 x_6 x_8 x_10 x_12))
+Overcrowding clause for x_9:(and true
+     (or (not x_4) (not x_5) (not x_6) (not x_8))
+     (or (not x_4) (not x_5) (not x_6) (not x_10))
+     (or (not x_4) (not x_5) (not x_6) (not x_12))
+     (or (not x_4) (not x_5) (not x_6) (not x_13))
+     (or (not x_4) (not x_5) (not x_6) (not x_14))
+     (or (not x_4) (not x_5) (not x_8) (not x_10))
+     (or (not x_4) (not x_5) (not x_8) (not x_12))
+     (or (not x_4) (not x_5) (not x_8) (not x_13))
+     (or (not x_4) (not x_5) (not x_8) (not x_14))
+     (or (not x_4) (not x_5) (not x_10) (not x_12))
+     (or (not x_4) (not x_5) (not x_10) (not x_13))
+     (or (not x_4) (not x_5) (not x_10) (not x_14))
+     (or (not x_4) (not x_5) (not x_12) (not x_13))
+     (or (not x_4) (not x_5) (not x_12) (not x_14))
+     (or (not x_4) (not x_5) (not x_13) (not x_14))
+     (or (not x_4) (not x_6) (not x_8) (not x_10))
+     (or (not x_4) (not x_6) (not x_8) (not x_12))
+     (or (not x_4) (not x_6) (not x_8) (not x_13))
+     (or (not x_4) (not x_6) (not x_8) (not x_14))
+     (or (not x_4) (not x_6) (not x_10) (not x_12))
+     (or (not x_4) (not x_6) (not x_10) (not x_13))
+     (or (not x_4) (not x_6) (not x_10) (not x_14))
+     (or (not x_4) (not x_6) (not x_12) (not x_13))
+     (or (not x_4) (not x_6) (not x_12) (not x_14))
+     (or (not x_4) (not x_6) (not x_13) (not x_14))
+     (or (not x_4) (not x_8) (not x_10) (not x_12))
+     (or (not x_4) (not x_8) (not x_10) (not x_13))
+     (or (not x_4) (not x_8) (not x_10) (not x_14))
+     (or (not x_4) (not x_8) (not x_12) (not x_13))
+     (or (not x_4) (not x_8) (not x_12) (not x_14))
+     (or (not x_4) (not x_8) (not x_13) (not x_14))
+     (or (not x_4) (not x_10) (not x_12) (not x_13))
+     (or (not x_4) (not x_10) (not x_12) (not x_14))
+     (or (not x_4) (not x_10) (not x_13) (not x_14))
+     (or (not x_4) (not x_12) (not x_13) (not x_14))
+     (or (not x_5) (not x_6) (not x_8) (not x_10))
+     (or (not x_5) (not x_6) (not x_8) (not x_12))
+     (or (not x_5) (not x_6) (not x_8) (not x_13))
+     (or (not x_5) (not x_6) (not x_8) (not x_14))
+     (or (not x_5) (not x_6) (not x_10) (not x_12))
+     (or (not x_5) (not x_6) (not x_10) (not x_13))
+     (or (not x_5) (not x_6) (not x_10) (not x_14))
+     (or (not x_5) (not x_6) (not x_12) (not x_13))
+     (or (not x_5) (not x_6) (not x_12) (not x_14))
+     (or (not x_5) (not x_6) (not x_13) (not x_14))
+     (or (not x_5) (not x_8) (not x_10) (not x_12))
+     (or (not x_5) (not x_8) (not x_10) (not x_13))
+     (or (not x_5) (not x_8) (not x_10) (not x_14))
+     (or (not x_5) (not x_8) (not x_12) (not x_13))
+     (or (not x_5) (not x_8) (not x_12) (not x_14))
+     (or (not x_5) (not x_8) (not x_13) (not x_14))
+     (or (not x_5) (not x_10) (not x_12) (not x_13))
+     (or (not x_5) (not x_10) (not x_12) (not x_14))
+     (or (not x_5) (not x_10) (not x_13) (not x_14))
+     (or (not x_5) (not x_12) (not x_13) (not x_14))
+     (or (not x_6) (not x_8) (not x_10) (not x_12))
+     (or (not x_6) (not x_8) (not x_10) (not x_13))
+     (or (not x_6) (not x_8) (not x_10) (not x_14))
+     (or (not x_6) (not x_8) (not x_12) (not x_13))
+     (or (not x_6) (not x_8) (not x_12) (not x_14))
+     (or (not x_6) (not x_8) (not x_13) (not x_14))
+     (or (not x_6) (not x_10) (not x_12) (not x_13))
+     (or (not x_6) (not x_10) (not x_12) (not x_14))
+     (or (not x_6) (not x_10) (not x_13) (not x_14))
+     (or (not x_6) (not x_12) (not x_13) (not x_14))
+     (or (not x_8) (not x_10) (not x_12) (not x_13))
+     (or (not x_8) (not x_10) (not x_12) (not x_14))
+     (or (not x_8) (not x_10) (not x_13) (not x_14))
+     (or (not x_8) (not x_12) (not x_13) (not x_14))
+     (or (not x_10) (not x_12) (not x_13) (not x_14)))
+Loneliness clause for x_10:(and true
+     (or x_5 x_6 x_7 x_9 x_11 x_13 x_14)
+     (or x_5 x_6 x_7 x_9 x_11 x_13 x_15)
+     (or x_5 x_6 x_7 x_9 x_11 x_14 x_15)
+     (or x_5 x_6 x_7 x_9 x_13 x_14 x_15)
+     (or x_5 x_6 x_7 x_11 x_13 x_14 x_15)
+     (or x_5 x_6 x_9 x_11 x_13 x_14 x_15)
+     (or x_5 x_7 x_9 x_11 x_13 x_14 x_15)
+     (or x_6 x_7 x_9 x_11 x_13 x_14 x_15))
+set diff:
+7 9 11 13 14 15 
+set diff:
+6 9 11 13 14 15 
+set diff:
+6 7 11 13 14 15 
+set diff:
+6 7 9 13 14 15 
+set diff:
+6 7 9 11 14 15 
+set diff:
+6 7 9 11 13 15 
+set diff:
+6 7 9 11 13 14 
+set diff:
+5 9 11 13 14 15 
+set diff:
+5 7 11 13 14 15 
+set diff:
+5 7 9 13 14 15 
+set diff:
+5 7 9 11 14 15 
+set diff:
+5 7 9 11 13 15 
+set diff:
+5 7 9 11 13 14 
+set diff:
+5 6 11 13 14 15 
+set diff:
+5 6 9 13 14 15 
+set diff:
+5 6 9 11 14 15 
+set diff:
+5 6 9 11 13 15 
+set diff:
+5 6 9 11 13 14 
+set diff:
+5 6 7 13 14 15 
+set diff:
+5 6 7 11 14 15 
+set diff:
+5 6 7 11 13 15 
+set diff:
+5 6 7 11 13 14 
+set diff:
+5 6 7 9 14 15 
+set diff:
+5 6 7 9 13 15 
+set diff:
+5 6 7 9 13 14 
+set diff:
+5 6 7 9 11 15 
+set diff:
+5 6 7 9 11 14 
+set diff:
+5 6 7 9 11 13 
+Stagnation clause for x_10:(and true
+     (or (not x_10) (not x_5) (not x_6) x_7 x_9 x_11 x_13 x_14 x_15)
+     (or (not x_10) (not x_5) (not x_7) x_6 x_9 x_11 x_13 x_14 x_15)
+     (or (not x_10) (not x_5) (not x_9) x_6 x_7 x_11 x_13 x_14 x_15)
+     (or (not x_10) (not x_5) (not x_11) x_6 x_7 x_9 x_13 x_14 x_15)
+     (or (not x_10) (not x_5) (not x_13) x_6 x_7 x_9 x_11 x_14 x_15)
+     (or (not x_10) (not x_5) (not x_14) x_6 x_7 x_9 x_11 x_13 x_15)
+     (or (not x_10) (not x_5) (not x_15) x_6 x_7 x_9 x_11 x_13 x_14)
+     (or (not x_10) (not x_6) (not x_7) x_5 x_9 x_11 x_13 x_14 x_15)
+     (or (not x_10) (not x_6) (not x_9) x_5 x_7 x_11 x_13 x_14 x_15)
+     (or (not x_10) (not x_6) (not x_11) x_5 x_7 x_9 x_13 x_14 x_15)
+     (or (not x_10) (not x_6) (not x_13) x_5 x_7 x_9 x_11 x_14 x_15)
+     (or (not x_10) (not x_6) (not x_14) x_5 x_7 x_9 x_11 x_13 x_15)
+     (or (not x_10) (not x_6) (not x_15) x_5 x_7 x_9 x_11 x_13 x_14)
+     (or (not x_10) (not x_7) (not x_9) x_5 x_6 x_11 x_13 x_14 x_15)
+     (or (not x_10) (not x_7) (not x_11) x_5 x_6 x_9 x_13 x_14 x_15)
+     (or (not x_10) (not x_7) (not x_13) x_5 x_6 x_9 x_11 x_14 x_15)
+     (or (not x_10) (not x_7) (not x_14) x_5 x_6 x_9 x_11 x_13 x_15)
+     (or (not x_10) (not x_7) (not x_15) x_5 x_6 x_9 x_11 x_13 x_14)
+     (or (not x_10) (not x_9) (not x_11) x_5 x_6 x_7 x_13 x_14 x_15)
+     (or (not x_10) (not x_9) (not x_13) x_5 x_6 x_7 x_11 x_14 x_15)
+     (or (not x_10) (not x_9) (not x_14) x_5 x_6 x_7 x_11 x_13 x_15)
+     (or (not x_10) (not x_9) (not x_15) x_5 x_6 x_7 x_11 x_13 x_14)
+     (or (not x_10) (not x_11) (not x_13) x_5 x_6 x_7 x_9 x_14 x_15)
+     (or (not x_10) (not x_11) (not x_14) x_5 x_6 x_7 x_9 x_13 x_15)
+     (or (not x_10) (not x_11) (not x_15) x_5 x_6 x_7 x_9 x_13 x_14)
+     (or (not x_10) (not x_13) (not x_14) x_5 x_6 x_7 x_9 x_11 x_15)
+     (or (not x_10) (not x_13) (not x_15) x_5 x_6 x_7 x_9 x_11 x_14)
+     (or (not x_10) (not x_14) (not x_15) x_5 x_6 x_7 x_9 x_11 x_13))
+Overcrowding clause for x_10:(and true
+     (or (not x_5) (not x_6) (not x_7) (not x_9))
+     (or (not x_5) (not x_6) (not x_7) (not x_11))
+     (or (not x_5) (not x_6) (not x_7) (not x_13))
+     (or (not x_5) (not x_6) (not x_7) (not x_14))
+     (or (not x_5) (not x_6) (not x_7) (not x_15))
+     (or (not x_5) (not x_6) (not x_9) (not x_11))
+     (or (not x_5) (not x_6) (not x_9) (not x_13))
+     (or (not x_5) (not x_6) (not x_9) (not x_14))
+     (or (not x_5) (not x_6) (not x_9) (not x_15))
+     (or (not x_5) (not x_6) (not x_11) (not x_13))
+     (or (not x_5) (not x_6) (not x_11) (not x_14))
+     (or (not x_5) (not x_6) (not x_11) (not x_15))
+     (or (not x_5) (not x_6) (not x_13) (not x_14))
+     (or (not x_5) (not x_6) (not x_13) (not x_15))
+     (or (not x_5) (not x_6) (not x_14) (not x_15))
+     (or (not x_5) (not x_7) (not x_9) (not x_11))
+     (or (not x_5) (not x_7) (not x_9) (not x_13))
+     (or (not x_5) (not x_7) (not x_9) (not x_14))
+     (or (not x_5) (not x_7) (not x_9) (not x_15))
+     (or (not x_5) (not x_7) (not x_11) (not x_13))
+     (or (not x_5) (not x_7) (not x_11) (not x_14))
+     (or (not x_5) (not x_7) (not x_11) (not x_15))
+     (or (not x_5) (not x_7) (not x_13) (not x_14))
+     (or (not x_5) (not x_7) (not x_13) (not x_15))
+     (or (not x_5) (not x_7) (not x_14) (not x_15))
+     (or (not x_5) (not x_9) (not x_11) (not x_13))
+     (or (not x_5) (not x_9) (not x_11) (not x_14))
+     (or (not x_5) (not x_9) (not x_11) (not x_15))
+     (or (not x_5) (not x_9) (not x_13) (not x_14))
+     (or (not x_5) (not x_9) (not x_13) (not x_15))
+     (or (not x_5) (not x_9) (not x_14) (not x_15))
+     (or (not x_5) (not x_11) (not x_13) (not x_14))
+     (or (not x_5) (not x_11) (not x_13) (not x_15))
+     (or (not x_5) (not x_11) (not x_14) (not x_15))
+     (or (not x_5) (not x_13) (not x_14) (not x_15))
+     (or (not x_6) (not x_7) (not x_9) (not x_11))
+     (or (not x_6) (not x_7) (not x_9) (not x_13))
+     (or (not x_6) (not x_7) (not x_9) (not x_14))
+     (or (not x_6) (not x_7) (not x_9) (not x_15))
+     (or (not x_6) (not x_7) (not x_11) (not x_13))
+     (or (not x_6) (not x_7) (not x_11) (not x_14))
+     (or (not x_6) (not x_7) (not x_11) (not x_15))
+     (or (not x_6) (not x_7) (not x_13) (not x_14))
+     (or (not x_6) (not x_7) (not x_13) (not x_15))
+     (or (not x_6) (not x_7) (not x_14) (not x_15))
+     (or (not x_6) (not x_9) (not x_11) (not x_13))
+     (or (not x_6) (not x_9) (not x_11) (not x_14))
+     (or (not x_6) (not x_9) (not x_11) (not x_15))
+     (or (not x_6) (not x_9) (not x_13) (not x_14))
+     (or (not x_6) (not x_9) (not x_13) (not x_15))
+     (or (not x_6) (not x_9) (not x_14) (not x_15))
+     (or (not x_6) (not x_11) (not x_13) (not x_14))
+     (or (not x_6) (not x_11) (not x_13) (not x_15))
+     (or (not x_6) (not x_11) (not x_14) (not x_15))
+     (or (not x_6) (not x_13) (not x_14) (not x_15))
+     (or (not x_7) (not x_9) (not x_11) (not x_13))
+     (or (not x_7) (not x_9) (not x_11) (not x_14))
+     (or (not x_7) (not x_9) (not x_11) (not x_15))
+     (or (not x_7) (not x_9) (not x_13) (not x_14))
+     (or (not x_7) (not x_9) (not x_13) (not x_15))
+     (or (not x_7) (not x_9) (not x_14) (not x_15))
+     (or (not x_7) (not x_11) (not x_13) (not x_14))
+     (or (not x_7) (not x_11) (not x_13) (not x_15))
+     (or (not x_7) (not x_11) (not x_14) (not x_15))
+     (or (not x_7) (not x_13) (not x_14) (not x_15))
+     (or (not x_9) (not x_11) (not x_13) (not x_14))
+     (or (not x_9) (not x_11) (not x_13) (not x_15))
+     (or (not x_9) (not x_11) (not x_14) (not x_15))
+     (or (not x_9) (not x_13) (not x_14) (not x_15))
+     (or (not x_11) (not x_13) (not x_14) (not x_15)))
+life & preservation
+life & preservation
+set diff:
+12 16 17 
+set diff:
+9 16 17 
+set diff:
+9 12 17 
+set diff:
+9 12 16 
+set diff:
+8 16 17 
+set diff:
+8 12 17 
+set diff:
+8 12 16 
+set diff:
+8 9 17 
+set diff:
+8 9 16 
+set diff:
+8 9 12 
+Stagnation clause for x_13:(and true
+     (or (not x_13) (not x_8) (not x_9) x_12 x_16 x_17)
+     (or (not x_13) (not x_8) (not x_12) x_9 x_16 x_17)
+     (or (not x_13) (not x_8) (not x_16) x_9 x_12 x_17)
+     (or (not x_13) (not x_8) (not x_17) x_9 x_12 x_16)
+     (or (not x_13) (not x_9) (not x_12) x_8 x_16 x_17)
+     (or (not x_13) (not x_9) (not x_16) x_8 x_12 x_17)
+     (or (not x_13) (not x_9) (not x_17) x_8 x_12 x_16)
+     (or (not x_13) (not x_12) (not x_16) x_8 x_9 x_17)
+     (or (not x_13) (not x_12) (not x_17) x_8 x_9 x_16)
+     (or (not x_13) (not x_16) (not x_17) x_8 x_9 x_12))
+Overcrowding clause for x_13:(and true
+     (or (not x_8) (not x_9) (not x_12) (not x_16))
+     (or (not x_8) (not x_9) (not x_12) (not x_17))
+     (or (not x_8) (not x_9) (not x_16) (not x_17))
+     (or (not x_8) (not x_12) (not x_16) (not x_17))
+     (or (not x_9) (not x_12) (not x_16) (not x_17)))
+set diff:
+13 
+set diff:
+9 
+set diff:
+8 
+Stagnation clause for x_12:(and true
+     (or (not x_12) (not x_8) (not x_9) x_13)
+     (or (not x_12) (not x_8) (not x_13) x_9)
+     (or (not x_12) (not x_9) (not x_13) x_8))
+Overcrowding clause for x_12:true
+set diff:
+10 12 14 
+set diff:
+9 12 14 
+set diff:
+9 10 14 
+set diff:
+9 10 12 
+set diff:
+8 12 14 
+set diff:
+8 10 14 
+set diff:
+8 10 12 
+set diff:
+8 9 14 
+set diff:
+8 9 12 
+set diff:
+8 9 10 
+Stagnation clause for x_13:(and true
+     (or (not x_13) (not x_8) (not x_9) x_10 x_12 x_14)
+     (or (not x_13) (not x_8) (not x_10) x_9 x_12 x_14)
+     (or (not x_13) (not x_8) (not x_12) x_9 x_10 x_14)
+     (or (not x_13) (not x_8) (not x_14) x_9 x_10 x_12)
+     (or (not x_13) (not x_9) (not x_10) x_8 x_12 x_14)
+     (or (not x_13) (not x_9) (not x_12) x_8 x_10 x_14)
+     (or (not x_13) (not x_9) (not x_14) x_8 x_10 x_12)
+     (or (not x_13) (not x_10) (not x_12) x_8 x_9 x_14)
+     (or (not x_13) (not x_10) (not x_14) x_8 x_9 x_12)
+     (or (not x_13) (not x_12) (not x_14) x_8 x_9 x_10))
+Overcrowding clause for x_13:(and true
+     (or (not x_8) (not x_9) (not x_10) (not x_12))
+     (or (not x_8) (not x_9) (not x_10) (not x_14))
+     (or (not x_8) (not x_9) (not x_12) (not x_14))
+     (or (not x_8) (not x_10) (not x_12) (not x_14))
+     (or (not x_9) (not x_10) (not x_12) (not x_14)))
+set diff:
+11 13 15 
+set diff:
+10 13 15 
+set diff:
+10 11 15 
+set diff:
+10 11 13 
+set diff:
+9 13 15 
+set diff:
+9 11 15 
+set diff:
+9 11 13 
+set diff:
+9 10 15 
+set diff:
+9 10 13 
+set diff:
+9 10 11 
+Stagnation clause for x_14:(and true
+     (or (not x_14) (not x_9) (not x_10) x_11 x_13 x_15)
+     (or (not x_14) (not x_9) (not x_11) x_10 x_13 x_15)
+     (or (not x_14) (not x_9) (not x_13) x_10 x_11 x_15)
+     (or (not x_14) (not x_9) (not x_15) x_10 x_11 x_13)
+     (or (not x_14) (not x_10) (not x_11) x_9 x_13 x_15)
+     (or (not x_14) (not x_10) (not x_13) x_9 x_11 x_15)
+     (or (not x_14) (not x_10) (not x_15) x_9 x_11 x_13)
+     (or (not x_14) (not x_11) (not x_13) x_9 x_10 x_15)
+     (or (not x_14) (not x_11) (not x_15) x_9 x_10 x_13)
+     (or (not x_14) (not x_13) (not x_15) x_9 x_10 x_11))
+Overcrowding clause for x_14:(and true
+     (or (not x_9) (not x_10) (not x_11) (not x_13))
+     (or (not x_9) (not x_10) (not x_11) (not x_15))
+     (or (not x_9) (not x_10) (not x_13) (not x_15))
+     (or (not x_9) (not x_11) (not x_13) (not x_15))
+     (or (not x_10) (not x_11) (not x_13) (not x_15)))
+set diff:
+12 14 16 
+set diff:
+11 14 16 
+set diff:
+11 12 16 
+set diff:
+11 12 14 
+set diff:
+10 14 16 
+set diff:
+10 12 16 
+set diff:
+10 12 14 
+set diff:
+10 11 16 
+set diff:
+10 11 14 
+set diff:
+10 11 12 
+Stagnation clause for x_15:(and true
+     (or (not x_15) (not x_10) (not x_11) x_12 x_14 x_16)
+     (or (not x_15) (not x_10) (not x_12) x_11 x_14 x_16)
+     (or (not x_15) (not x_10) (not x_14) x_11 x_12 x_16)
+     (or (not x_15) (not x_10) (not x_16) x_11 x_12 x_14)
+     (or (not x_15) (not x_11) (not x_12) x_10 x_14 x_16)
+     (or (not x_15) (not x_11) (not x_14) x_10 x_12 x_16)
+     (or (not x_15) (not x_11) (not x_16) x_10 x_12 x_14)
+     (or (not x_15) (not x_12) (not x_14) x_10 x_11 x_16)
+     (or (not x_15) (not x_12) (not x_16) x_10 x_11 x_14)
+     (or (not x_15) (not x_14) (not x_16) x_10 x_11 x_12))
+Overcrowding clause for x_15:(and true
+     (or (not x_10) (not x_11) (not x_12) (not x_14))
+     (or (not x_10) (not x_11) (not x_12) (not x_16))
+     (or (not x_10) (not x_11) (not x_14) (not x_16))
+     (or (not x_10) (not x_12) (not x_14) (not x_16))
+     (or (not x_11) (not x_12) (not x_14) (not x_16)))
+set diff:
+13 15 17 
+set diff:
+12 15 17 
+set diff:
+12 13 17 
+set diff:
+12 13 15 
+set diff:
+11 15 17 
+set diff:
+11 13 17 
+set diff:
+11 13 15 
+set diff:
+11 12 17 
+set diff:
+11 12 15 
+set diff:
+11 12 13 
+Stagnation clause for x_16:(and true
+     (or (not x_16) (not x_11) (not x_12) x_13 x_15 x_17)
+     (or (not x_16) (not x_11) (not x_13) x_12 x_15 x_17)
+     (or (not x_16) (not x_11) (not x_15) x_12 x_13 x_17)
+     (or (not x_16) (not x_11) (not x_17) x_12 x_13 x_15)
+     (or (not x_16) (not x_12) (not x_13) x_11 x_15 x_17)
+     (or (not x_16) (not x_12) (not x_15) x_11 x_13 x_17)
+     (or (not x_16) (not x_12) (not x_17) x_11 x_13 x_15)
+     (or (not x_16) (not x_13) (not x_15) x_11 x_12 x_17)
+     (or (not x_16) (not x_13) (not x_17) x_11 x_12 x_15)
+     (or (not x_16) (not x_15) (not x_17) x_11 x_12 x_13))
+Overcrowding clause for x_16:(and true
+     (or (not x_11) (not x_12) (not x_13) (not x_15))
+     (or (not x_11) (not x_12) (not x_13) (not x_17))
+     (or (not x_11) (not x_12) (not x_15) (not x_17))
+     (or (not x_11) (not x_13) (not x_15) (not x_17))
+     (or (not x_12) (not x_13) (not x_15) (not x_17)))
+set diff:
+16 
+set diff:
+13 
+set diff:
+12 
+Stagnation clause for x_17:(and true
+     (or (not x_17) (not x_12) (not x_13) x_16)
+     (or (not x_17) (not x_12) (not x_16) x_13)
+     (or (not x_17) (not x_13) (not x_16) x_12))
+Overcrowding clause for x_17:true
+SAT
+0 0 0 0 1 1 
+1 1 0 0 1 1 
+1 1 0 0 0 0 
+0 0 0 0 0 0 
