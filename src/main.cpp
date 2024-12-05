@@ -26,8 +26,8 @@ void printShortBoard(const vector<vector<short>> &board, short rows, short colum
         }
 }
 
-set<short> generateNeighboursSet(short i, short j, short rows, short columns) {
-        set<short> neighbours;
+set<short> generateNeighborsSet(short i, short j, short rows, short columns) {
+        set<short> neighbors;
 
 
         // Define os offsets para as 8 posições possíveis
@@ -44,11 +44,11 @@ set<short> generateNeighboursSet(short i, short j, short rows, short columns) {
 
                 // Verifica se está dentro do tabuleiro
                 if (ni >= 0 && ni < rows && nj >= 0 && nj < columns) {
-                        neighbours.insert(ni * rows + nj);  // Adiciona o vizinho no conjunto
+                        neighbors.insert(ni * rows + nj);  // Adiciona o vizinho no conjunto
                 }
         }
 
-        return neighbours;
+        return neighbors;
 }
 
 expr setDisjunction(context &z3_context, vector<short> &variables) {
@@ -94,6 +94,25 @@ vector<vector<short>> generateSubsets(const set<short>& input_set, size_t subset
         return subsets;
 }
 
+void loneliness(solver &z3_solver, context &z3_context, short x, set<short> &neighbors) {
+
+        // Constrói a cláusula se a célula possui 8 vizinhos, necessário para
+        // evitar problemas com células de borda
+        if (neighbors.size() != 8) {
+                return;
+        }
+        expr conjunction = z3_context.bool_val(true);
+
+        vector<vector<short>> subsets = generateSubsets(neighbors, 7);
+        for (auto &subset : subsets) {
+                expr disjunction = setDisjunction(z3_context, subset);
+                // Junta por conjunção cada disjunção
+                conjunction = conjunction && disjunction;
+        }
+        z3_solver.add(conjunction);
+        cout << "Loneliness clause for " << "x_" << x << ":" << conjunction << "\n";
+}
+
 int main() {
 
         short rows, columns;
@@ -105,42 +124,40 @@ int main() {
         printShortBoard(board, rows, columns);
 
         context z3_context;
-        solver solver(z3_context);
+        solver z3_solver(z3_context);
 
-        // Gera as variáveis boolean para cada célula do tabuleiro
+        vector<expr> variables;
+
+        // Gera a variável para cada célula do tabuleiro
         for (short i = 0; i < rows; i ++) {
                 for (short j = 0; j < columns; j++) {
-                        string curr_var = "x_" + to_string(i * rows + j);
-                        cout << curr_var << "\n";
+                        expr curr_var = z3_context.bool_const(("x_" + to_string(i * rows + j)).c_str());
+                        variables.push_back(curr_var);
                 }
         }
 
-        // Iterate through every cell in the board
-        for (short i = 0; i < rows; i++) {
+        // Itera sobre cada célula no tabuleiro
+        for (short i = 0; i < rows; i ++) {
                 for (short j = 0; j < columns; j++) {
-                        // Generate the neighbors set for the current cell (i, j)
-                        set<short> neighbours = generateNeighboursSet(i, j, rows, columns);
+                        short x = i * rows + j;
+                        set<short> x_neighbors = generateNeighborsSet(i, j, rows, columns);
 
-                        // Add the current cell itself to the neighbors set
-                        //neighbours.insert(i * rows + j); // Add the variable for the current cell
-
-                        // Generate the disjunction of the variables for the current cell and its neighbors
-                        vector<vector<short>> subsets = generateSubsets(neighbours, 7);
-                        if (!subsets.empty()) {
-                                for (auto &subset : subsets) {
-                                        expr disjunction = setDisjunction(z3_context, subset);
-                                        // Add the disjunction as a clause in the solver
-                                        cout << disjunction << "\n";
-                                        solver.add(disjunction);
-                                }
+                        // Se a célula está viva
+                        if (board[i][j] == 1) {
+                                loneliness(z3_solver, z3_context, x, x_neighbors);
                         }
-
                 }
         }
+
         // Check satisfiability and print the result
-        if (solver.check() == sat) {
+        if (z3_solver.check() == sat) {
                 cout << "SAT\n";
-                cout << "Model:\n" << solver.get_model() << "\n";
+                model z3_model = z3_solver.get_model();
+                // Extract and print the value for each variable
+                for (const auto& var : variables) {
+                        expr value = z3_model.eval(var, true);  // Get the value of the variable from the model
+                        cout << var << " = " << value << "\n";  // Print the variable and its assigned value
+                }
         } else {
                 cout << "UNSAT\n";
         }
