@@ -16,7 +16,7 @@ void readBoard(vector<vector<short>> &board, short rows, short columns) {
         }
 }
 
-void prshortBoard(const vector<vector<short>> &board, short rows, short columns) {
+void printShortBoard(const vector<vector<short>> &board, short rows, short columns) {
         for (short i = 0; i < rows; i++) {
                 for (short j = 0; j < columns; j++) {
                         cout << (i * rows + j) << " ";
@@ -51,7 +51,7 @@ set<short> generateNeighboursSet(short i, short j, short rows, short columns) {
         return neighbours;
 }
 
-expr setDisjunction(context &z3_context, set<short> &variables) {
+expr setDisjunction(context &z3_context, vector<short> &variables) {
         expr_vector var_vector(z3_context);  // Inicializa o vetor com a expressão
 
         // Itera sobre o conjunto de variáveis
@@ -64,12 +64,6 @@ expr setDisjunction(context &z3_context, set<short> &variables) {
         return mk_or(var_vector);
 }
 
-//expr conjunctionOfDisjunctions(context &z3_context, vector<vector<short>> &subsets) {
-//
-//        for (const auto &subset : subsets) {
-//                expr disjunction
-//        }
-//}
 
 vector<vector<short>> generateSubsets(const set<short>& input_set, size_t subset_size) {
 
@@ -108,9 +102,10 @@ int main() {
         vector<vector<short>> board(rows, vector<short>(columns, 0));
 
         readBoard(board, rows, columns);
-        prshortBoard(board, rows, columns);
+        printShortBoard(board, rows, columns);
 
         context z3_context;
+        solver solver(z3_context);
 
         // Gera as variáveis boolean para cada célula do tabuleiro
         for (short i = 0; i < rows; i ++) {
@@ -120,19 +115,34 @@ int main() {
                 }
         }
 
-        set<short> neighbours = generateNeighboursSet(1, 1, rows, columns);
+        // Iterate through every cell in the board
+        for (short i = 0; i < rows; i++) {
+                for (short j = 0; j < columns; j++) {
+                        // Generate the neighbors set for the current cell (i, j)
+                        set<short> neighbours = generateNeighboursSet(i, j, rows, columns);
 
-        for (const auto &elem : neighbours) {
-                cout << elem << " ";
-        }
-        cout << "\n";
+                        // Add the current cell itself to the neighbors set
+                        //neighbours.insert(i * rows + j); // Add the variable for the current cell
 
-        vector<vector<short>> subsets = generateSubsets(neighbours, 7);
-        for (const auto &subset : subsets) {
-                for (const auto &elem : subset) {
-                        cout << elem << " ";
+                        // Generate the disjunction of the variables for the current cell and its neighbors
+                        vector<vector<short>> subsets = generateSubsets(neighbours, 7);
+                        if (!subsets.empty()) {
+                                for (auto &subset : subsets) {
+                                        expr disjunction = setDisjunction(z3_context, subset);
+                                        // Add the disjunction as a clause in the solver
+                                        cout << disjunction << "\n";
+                                        solver.add(disjunction);
+                                }
+                        }
+
                 }
-                cout << "\n";
+        }
+        // Check satisfiability and print the result
+        if (solver.check() == sat) {
+                cout << "SAT\n";
+                cout << "Model:\n" << solver.get_model() << "\n";
+        } else {
+                cout << "UNSAT\n";
         }
 
         return 0;
