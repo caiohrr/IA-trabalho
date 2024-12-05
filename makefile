@@ -4,18 +4,18 @@ SRCDIR = ./src/
 INCDIR = ./include/
 
 CC = g++
-CFILES = $(foreach D, $(SRCDIR), $(wildcard $(D)*.cpp))
-CFLAGS = -Wall -lz3
-LDFLAGS = $(foreach D, $(INCDIR), -I$(D))
+CFILES = $(wildcard $(SRCDIR)*.cpp)
+CFLAGS = -Wall $(foreach D, $(INCDIR), -I$(D))
+LDFLAGS = -lz3
 OBJFILES = $(patsubst %.cpp, %.o, $(CFILES))
 
 all: $(TARGET)
 
-$(TARGET) : $(OBJFILES)
+$(TARGET): $(OBJFILES)
 	$(CC) -o $@ $^ $(LDFLAGS)
 
-%.o : %.cpp
-	$(CC) $(CFLAGS) $(LDFLAGS) -c -o $@ $^
+%.o: %.cpp
+	$(CC) $(CFLAGS) -c -o $@ $^
 
 clean:
 	rm -f $(TARGET) $(OBJFILES)
