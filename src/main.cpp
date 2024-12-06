@@ -263,27 +263,25 @@ void life(solver &z3_solver, context &z3_context, short x, set<short> &neighbors
 }
 
 int main() {
-        //auto start = high_resolution_clock::now();
+
+        auto start_time = high_resolution_clock::now();
+        const int time_limit = 300; // Tempo limite
 
         short rows, columns;
         cin >> rows >> columns;
 
         vector<vector<short>> board(rows, vector<short>(columns, 0));
-
         readBoard(board, rows, columns);
-        //printShortBoard(board, rows, columns);
 
         context z3_context;
         solver z3_solver(z3_context);
-        z3_solver.set("timeout", static_cast<unsigned>(150000));
 
-        // Create an auxiliary integer variable to count true variables
+        z3_solver.set("timeout", static_cast<unsigned>(150000)); // 150 seconds for individual checks (optional, redundant with loop timeout)
+
         expr num_true = z3_context.int_const("num_true");
-        z3_solver.add(num_true >= 0);  // Ensure non-negativity
+        z3_solver.add(num_true >= 0);
 
         vector<expr> variables;
-
-        // Gera a variável para cada célula do tabuleiro
         for (short i = 0; i < rows; i++) {
                 for (short j = 0; j < columns; j++) {
                         expr curr_var = z3_context.bool_const(("x_" + to_string(i * rows + j)).c_str());
@@ -291,56 +289,66 @@ int main() {
                 }
         }
 
-        // Itera sobre cada célula no tabuleiro
         for (short i = 0; i < rows; i++) {
                 for (short j = 0; j < columns; j++) {
                         short x = i * rows + j;
                         set<short> x_neighbors = generateNeighborsSet(i, j, rows, columns);
 
-                        // Se a célula está viva
                         if (board[i][j] == 1) {
                                 loneliness(z3_solver, z3_context, x, x_neighbors);
                                 stagnation(z3_solver, z3_context, x, x_neighbors);
                                 overcrowding(z3_solver, z3_context, x, x_neighbors);
                         } else {
-
                                 preservation(z3_solver, z3_context, x, x_neighbors);
                                 life(z3_solver, z3_context, x, x_neighbors);
                         }
                 }
         }
 
-        // Add a constraint linking `num_true` to the sum of `true` variables
         expr_vector sum_exprs(z3_context);
         for (const auto &var : variables) {
                 sum_exprs.push_back(z3::ite(var, z3_context.int_val(1), z3_context.int_val(0)));
         }
         z3_solver.add(num_true == sum(sum_exprs));
 
-        int min_true_clauses = INT_MAX;  // To store the minimum number of true clauses
-        vector<vector<short>> best_board(rows, vector<short>(columns, 0));  // Best board configuration
-                                                                            //
-                                                                            //
+        int min_true_clauses = INT_MAX;
+        vector<vector<short>> best_board(rows, vector<short>(columns, 0));
 
-        // Check satisfiability and print the result
-        while (z3_solver.check() == sat) {
+
+        while (true) {
+                auto current_time = high_resolution_clock::now();
+                auto elapsed_time = duration_cast<seconds>(current_time - start_time).count();
+
+
+                cout << elapsed_time << "\n";
+
+                if (elapsed_time >= time_limit) {
+                        cout << "Time limit reached. Printing the best board found.\n";
+                        break;
+                }
+                
+                auto current_iteration_start = high_resolution_clock::now();
+                if (z3_solver.check() != sat) {
+                        cout << "No more solutions found.\n";
+                        break;
+                }
+                auto current_iteration_stop = high_resolution_clock::now();
+                auto current_iteration_time = duration_cast<seconds>(current_iteration_stop - current_iteration_start).count();
+
                 model z3_model = z3_solver.get_model();
-
-                // Calculate number of true clauses for this solution
                 int true_clauses = 0;
+
                 for (const auto &var : variables) {
                         if (z3_model.eval(var, true).bool_value() == Z3_L_TRUE) {
                                 true_clauses++;
                         }
                 }
 
-                //cout << "True clauses: " << true_clauses << endl;
-
-                // If the current solution has fewer true clauses, update the best solution
                 if (true_clauses < min_true_clauses) {
                         min_true_clauses = true_clauses;
+                        cout << "\nTrue vars = " << true_clauses << "\n";
+                        printShortBoard(best_board, rows, columns);
 
-                        // Reconstruct the board from the model
                         size_t idx = 0;
                         for (short i = 0; i < rows; i++) {
                                 for (short j = 0; j < columns; j++) {
@@ -349,20 +357,25 @@ int main() {
                                         idx++;
                                 }
                         }
-
-                        // Optionally, print the board with the minimum true clauses
-                        //cout << "Best board with minimum true clauses (" << min_true_clauses << "):\n";
-                        //printReconstructedBoard(variables, z3_model, rows, columns);
                 }
-                z3_solver.add(num_true < min_true_clauses);
-        }
-        //auto stop = high_resolution_clock::now();
-        //auto duration = duration_cast<seconds>(stop - start);
 
-        //cout << "Run time = " << duration.count() << " s\n";
+                z3_solver.add(num_true < min_true_clauses);
+
+                // Estimativa de que a próxima iteração irá ultrapassar o limite de tempo
+                // Margem que estima que a proxima iteração será 20% mais lenta do que a atual
+                //
+                auto time_estimate = (elapsed_time + current_iteration_time) * 1.2;
+
+                cout << "Time estimate for next iteration: " << time_estimate << "\n";
+                cout << "The next iteration will end at " << time_estimate + duration_cast<seconds>(current_time - start_time).count() << " s of execution time\n";
+                cout << "Time limit is " << time_limit << "\n";
+                if (time_estimate + duration_cast<seconds>(current_time - start_time).count() > time_limit) {
+                        break;
+                }
+        }
 
         printShortBoard(best_board, rows, columns);
-        //cout << "Best board found with " << min_true_clauses << " true clauses." << endl;
+        cout << "Best board found with " << min_true_clauses << " true clauses." << endl;
 
         return 0;
 }
