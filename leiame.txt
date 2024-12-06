@@ -1,0 +1,56 @@
+== Autores:
+
+Caio Henrique Ramos Rufino - GRR20224386
+Frank Wolff Hannemann - GRR20224758
+
+== Compilação e execução do programa:
+
+Para compilar rode o comando make para gerar o executável "reverseGof"
+O programa recebe uma entrada pela stdin, e imprime a saída, o estado imediatamente
+anterior com o menor número de células vivas encontrado na stdout.
+
+== Estratégia utilizada:
+
+A estratégia implementada foi codificar o problema de reversão de um tabuleiro
+do jogo da vida como um problema SAT. Para realizar isso, a construção das
+cláusulas foi baseada no artigo: "Time-Reversal in Conway’s Life as SAT", de
+Stuart Bain.
+
+== Detalhes do SAT-solver escolhido e da codificação do problema como SAT:
+
+Como SAT-solver, optamos pelo Z3, que possui uma API para ser utilizado diretamente
+em C++, e apresenta um desempenho alto para problemas de satisfatibilidade.
+
+Cada célula foi associada a uma variável de nome x_{pos}, onde "pos" é a posição da
+célula no tabuleiro, e ela segue a fórmula: pos = i * m + j, sendo que:
+ - i é a linha na qual a célula está.
+ - m é a quantidade de linhas do tabuleiro.
+ - j é a coluna na qual a célula está.
+
+Segue um exemplo para o estado com tabuleiro 3x3:
+    1 0 0    x0 x1 x2
+    0 0 1 -> x3 x4 x5
+    1 0 0    x6 x7 x8
+
+As estapas de construção das cláusulas são:
+  - Para cada célula no tabuleiro de entrada:
+      -> Adicionar a própria célula como uma variável.
+      -> Se a célula estiver viva:
+         => Adiciona as cláusulas de loneliness, stagnation e overcrowding.
+      -> Caso estiver morta:
+         => Adiciona as cláusulas de life e preservation.
+
+Para tentar buscar a melhor solução possível, com o menor número de células vivas,
+adiciona-se a cada solução SAT encontrada pelo SAT-solver, uma restrição de que o
+número de células vivas que ele encontrar para as próximas soluções deve ser menor
+que o menor número de células vivas encontrado até o momento.
+
+== Detalhes da implementação em C++:
+
+A estrutura de dados principal utilizada foi o set, que permite que sejam trabalhados
+com as variáveis como conjuntos, assim como consta no artigo que descreve a modelagem
+do problema.
+
+Foi adicionado um timer que limita o tempo de execução com base em uma estimativa
+de quanto levou para encontrar uma solução na iteração anterior. Calcula-se então
+se o tempo que levou para encontrar uma solução mais o tempo decorrido até agora.
