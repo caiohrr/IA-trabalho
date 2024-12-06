@@ -3,8 +3,10 @@
 #include <vector>
 #include <iterator>
 #include <algorithm>
+#include <chrono>
 #include "z3++.h"
 
+using namespace std::chrono;
 using namespace std;
 using namespace z3;
 
@@ -19,8 +21,7 @@ void readBoard(vector<vector<short>> &board, short rows, short columns) {
 void printShortBoard(const vector<vector<short>> &board, short rows, short columns) {
         for (short i = 0; i < rows; i++) {
                 for (short j = 0; j < columns; j++) {
-                        cout << (i * rows + j) << " ";
-                        //cout << board[i][j] << " ";
+                        cout << board[i][j] << " ";
                 }
                 cout << "\n";
         }
@@ -28,15 +29,15 @@ void printShortBoard(const vector<vector<short>> &board, short rows, short colum
 
 // Função para imprimir o tabuleiro reconstruído com base nas valorações do SAT solver
 void printReconstructedBoard(const vector<expr>& variables, model& z3_model, short rows, short columns) {
-    size_t idx = 0;
-    for (short i = 0; i < rows; i++) {
-        for (short j = 0; j < columns; j++) {
-            expr value = z3_model.eval(variables[idx], true);  // Get the value of the variable from the model
-            cout << (value.bool_value() == Z3_L_TRUE ? 1 : 0) << " ";  // 1 if true, 0 if false
-            idx++;
+        size_t idx = 0;
+        for (short i = 0; i < rows; i++) {
+                for (short j = 0; j < columns; j++) {
+                        expr value = z3_model.eval(variables[idx], true);  // Get the value of the variable from the model
+                        cout << (value.bool_value() == Z3_L_TRUE ? 1 : 0) << " ";  // 1 if true, 0 if false
+                        idx++;
+                }
+                cout << endl;
         }
-        cout << endl;
-    }
 }
 
 set<short> generateNeighborsSet(short i, short j, short rows, short columns) {
@@ -85,15 +86,32 @@ expr setDisjunction(context &z3_context, vector<short> &variables, bool negate) 
 
 vector<vector<short>> generateSubsets(const set<short>& input_set, size_t subset_size) {
 
+
         // Se o tamanho do set de entrada for menor que o tamanho esperado dos 
         // subsets, então retorna um conjunto vazio
         if (input_set.size() < subset_size) {
                 return {};
         }
 
+
         vector<vector<short>> subsets;
         vector<short> setVector(input_set.begin(), input_set.end());  // Converte conjunto pra vetor
         size_t n = setVector.size();
+
+
+        //        size_t n1 = setVector.size();
+        //        // Calculate total number of subsets: binomial coefficient C(n, subset_size)
+        //        size_t total_subsets = 1;
+        //        for (size_t i = 0; i < subset_size; ++i) {
+        //                total_subsets *= (n1 - i);
+        //                total_subsets /= (i + 1);
+        //        }
+        //
+        //        cout << "Generating " << total_subsets << " subsets of size " << subset_size 
+        //                << " from a set of size " << n1 << "." << endl;
+        //
+        //
+
 
         // Gera todas as combinações para o tamanho desejado
         vector<bool> combination(n);
@@ -133,6 +151,10 @@ void loneliness(solver &z3_solver, context &z3_context, short x, set<short> &nei
 
 void overcrowding(solver &z3_solver, context &z3_context, short x, set<short> &neighbors) {
 
+        if (neighbors.size() < 4) {
+                return;
+        }
+
         expr conjunction = z3_context.bool_val(true);
 
         vector<vector<short>> subsets = generateSubsets(neighbors, 4);
@@ -153,8 +175,8 @@ void stagnation(solver &z3_solver, context &z3_context, short x, set<short> &nei
         for (auto &subset : subsets) {
                 vector<short> diff_set = {};
                 set_difference(neighbors.begin(), neighbors.end(),
-                               subset.begin(), subset.end(),
-                               inserter(diff_set, diff_set.begin()));
+                                subset.begin(), subset.end(),
+                                inserter(diff_set, diff_set.begin()));
 
                 //cout << "set diff:\n";
                 //for (auto const &elem : diff_set)
@@ -185,8 +207,8 @@ void preservation(solver &z3_solver, context &z3_context, short x, set<short> &n
         for (auto &subset : subsets) {
                 vector<short> diff_set = {};
                 set_difference(neighbors.begin(), neighbors.end(),
-                               subset.begin(), subset.end(),
-                               inserter(diff_set, diff_set.begin()));
+                                subset.begin(), subset.end(),
+                                inserter(diff_set, diff_set.begin()));
 
                 //cout << "set diff:\n";
                 //for (auto const &elem : diff_set)
@@ -218,8 +240,8 @@ void life(solver &z3_solver, context &z3_context, short x, set<short> &neighbors
         for (auto &subset : subsets) {
                 vector<short> diff_set = {};
                 set_difference(neighbors.begin(), neighbors.end(),
-                               subset.begin(), subset.end(),
-                               inserter(diff_set, diff_set.begin()));
+                                subset.begin(), subset.end(),
+                                inserter(diff_set, diff_set.begin()));
 
                 //cout << "set diff:\n";
                 //for (auto const &elem : diff_set)
@@ -240,8 +262,8 @@ void life(solver &z3_solver, context &z3_context, short x, set<short> &neighbors
         //cout << "Life clause for " << "x_" << x << ":" << conjunction << "\n";
 }
 
-
 int main() {
+        //auto start = high_resolution_clock::now();
 
         short rows, columns;
         cin >> rows >> columns;
@@ -249,15 +271,20 @@ int main() {
         vector<vector<short>> board(rows, vector<short>(columns, 0));
 
         readBoard(board, rows, columns);
-        printShortBoard(board, rows, columns);
+        //printShortBoard(board, rows, columns);
 
         context z3_context;
         solver z3_solver(z3_context);
+        z3_solver.set("timeout", static_cast<unsigned>(150000));
+
+        // Create an auxiliary integer variable to count true variables
+        expr num_true = z3_context.int_const("num_true");
+        z3_solver.add(num_true >= 0);  // Ensure non-negativity
 
         vector<expr> variables;
 
         // Gera a variável para cada célula do tabuleiro
-        for (short i = 0; i < rows; i ++) {
+        for (short i = 0; i < rows; i++) {
                 for (short j = 0; j < columns; j++) {
                         expr curr_var = z3_context.bool_const(("x_" + to_string(i * rows + j)).c_str());
                         variables.push_back(curr_var);
@@ -265,7 +292,7 @@ int main() {
         }
 
         // Itera sobre cada célula no tabuleiro
-        for (short i = 0; i < rows; i ++) {
+        for (short i = 0; i < rows; i++) {
                 for (short j = 0; j < columns; j++) {
                         short x = i * rows + j;
                         set<short> x_neighbors = generateNeighborsSet(i, j, rows, columns);
@@ -283,24 +310,59 @@ int main() {
                 }
         }
 
+        // Add a constraint linking `num_true` to the sum of `true` variables
+        expr_vector sum_exprs(z3_context);
+        for (const auto &var : variables) {
+                sum_exprs.push_back(z3::ite(var, z3_context.int_val(1), z3_context.int_val(0)));
+        }
+        z3_solver.add(num_true == sum(sum_exprs));
+
+        int min_true_clauses = INT_MAX;  // To store the minimum number of true clauses
+        vector<vector<short>> best_board(rows, vector<short>(columns, 0));  // Best board configuration
+                                                                            //
+                                                                            //
+
         // Check satisfiability and print the result
         while (z3_solver.check() == sat) {
-                cout << "SAT\n";
                 model z3_model = z3_solver.get_model();
 
-                printReconstructedBoard(variables, z3_model, rows, columns);
-
-                // Create a blocking clause to find a different solution
-                expr block_clause = z3_context.bool_val(false);
+                // Calculate number of true clauses for this solution
+                int true_clauses = 0;
                 for (const auto &var : variables) {
-                        expr value = z3_model.eval(var, true);
-                        block_clause = block_clause || (var != value);
+                        if (z3_model.eval(var, true).bool_value() == Z3_L_TRUE) {
+                                true_clauses++;
+                        }
                 }
-                z3_solver.add(block_clause);  // Add the blocking clause
 
+                //cout << "True clauses: " << true_clauses << endl;
+
+                // If the current solution has fewer true clauses, update the best solution
+                if (true_clauses < min_true_clauses) {
+                        min_true_clauses = true_clauses;
+
+                        // Reconstruct the board from the model
+                        size_t idx = 0;
+                        for (short i = 0; i < rows; i++) {
+                                for (short j = 0; j < columns; j++) {
+                                        expr value = z3_model.eval(variables[idx], true);
+                                        best_board[i][j] = (value.bool_value() == Z3_L_TRUE ? 1 : 0);
+                                        idx++;
+                                }
+                        }
+
+                        // Optionally, print the board with the minimum true clauses
+                        //cout << "Best board with minimum true clauses (" << min_true_clauses << "):\n";
+                        //printReconstructedBoard(variables, z3_model, rows, columns);
+                }
+                z3_solver.add(num_true < min_true_clauses);
         }
+        //auto stop = high_resolution_clock::now();
+        //auto duration = duration_cast<seconds>(stop - start);
 
-        cout << "UNSAT\n";
+        //cout << "Run time = " << duration.count() << " s\n";
+
+        printShortBoard(best_board, rows, columns);
+        //cout << "Best board found with " << min_true_clauses << " true clauses." << endl;
 
         return 0;
 }
