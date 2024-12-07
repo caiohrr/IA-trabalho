@@ -54,16 +54,22 @@ adiciona-se a cada solução SAT encontrada pelo SAT-solver, uma restrição de 
 número de células vivas que ele encontrar para as próximas soluções deve ser menor
 que o menor número de células vivas encontrado até o momento.
 
-== Detalhes da implementação em C++:
+== Detalhes da do código e implementação em C++:
 
 O código foi divido em 3 arquivos:
  - utils.cpp: funções de utilidade e auxiliares.
  - encoding.cpp: codificação das cláusulas principais.
  - main.cpp: função principal do programa.
 
+Como o solver Z3 é muito grande, não foi possível enviá-lo no diretório do trabalho,
+(excedeu o limite de 10MB imposto pelo Moodle) por isso, é necessário instalar o
+package do z3 para rodar o programa.
+
 A estrutura de dados principal utilizada foi o set, que permite que sejam trabalhados
 com as variáveis como conjuntos, assim como consta no artigo que descreve a modelagem
 do problema.
+
+Para acelerar a execução, foi utilizado uma opção do Z3 para utilizar múltiplas threads.
 
 Foi adicionado um timer que limita o tempo de execução com base em uma estimativa
 de quanto levou para encontrar uma solução na iteração anterior. Calcula-se então

@@ -1,13 +1,13 @@
 TARGET = reverseGof
 
 SRCDIR = ./src/
-INCDIR = ./include/ ./z3/include/
-LIBDIR = ./z3/lib/
+INCDIR = ./include/ /usr/include/ 
+LIBDIR = /usr/lib/               
 
 CC = g++
 CFILES = $(wildcard $(SRCDIR)*.cpp)
 CFLAGS = -Wall $(foreach D, $(INCDIR), -I$(D))
-LDFLAGS = -L$(LIBDIR) -lz3
+LDFLAGS = -L$(LIBDIR) -lz3      
 OBJFILES = $(patsubst %.cpp, %.o, $(CFILES))
 
 all: $(TARGET)
