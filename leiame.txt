@@ -34,11 +34,20 @@ Segue um exemplo para o estado com tabuleiro 3x3:
 
 As estapas de construção das cláusulas são:
   - Para cada célula no tabuleiro de entrada:
+
       -> Adicionar a própria célula como uma variável.
+
       -> Se a célula estiver viva:
          => Adiciona as cláusulas de loneliness, stagnation e overcrowding.
+
       -> Caso estiver morta:
          => Adiciona as cláusulas de life e preservation.
+
+Para células de borda, que tem um número de vizinhos menor do que o necessário para
+construir uma cláusula, essa cláusula simplesmente não é construída. Por exemplo,
+uma célula no canto superior esquerdo do tabuleiro tem apenas 4 vizinhos, mas a
+cláusula de Loneliness demanda no mínimo 7 vizinhos para ser contruída, portanto,
+essa cláusula simplesmente não é construída para essa célula.
 
 Para tentar buscar a melhor solução possível, com o menor número de células vivas,
 adiciona-se a cada solução SAT encontrada pelo SAT-solver, uma restrição de que o
@@ -47,6 +56,11 @@ que o menor número de células vivas encontrado até o momento.
 
 == Detalhes da implementação em C++:
 
+O código foi divido em 3 arquivos:
+ - utils.cpp: funções de utilidade e auxiliares.
+ - encoding.cpp: codificação das cláusulas principais.
+ - main.cpp: função principal do programa.
+
 A estrutura de dados principal utilizada foi o set, que permite que sejam trabalhados
 com as variáveis como conjuntos, assim como consta no artigo que descreve a modelagem
 do problema.
@@ -54,3 +68,6 @@ do problema.
 Foi adicionado um timer que limita o tempo de execução com base em uma estimativa
 de quanto levou para encontrar uma solução na iteração anterior. Calcula-se então
 se o tempo que levou para encontrar uma solução mais o tempo decorrido até agora.
+Se este exceder o limite, é porque estimamos que a próxima vez que o solver buscar
+por uma solução, ela não será encontrada a tempo, então deve-se terminar a execução
+e imprimir o melhor estado encontrado.
