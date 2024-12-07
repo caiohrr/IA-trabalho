@@ -6,40 +6,40 @@
 #include "z3++.h"
 #include "utils.hpp"
 
-void readBoard(vector<vector<short>> &board, short rows, short columns) {
+void readBoard(std::vector<std::vector<short>> &board, short rows, short columns) {
         for (short i = 0; i < rows; i++) {
                 for (short j = 0; j < columns; j++) {
-                        cin >> board[i][j];
+                        std::cin >> board[i][j];
                 }
         }
 }
 
-void printShortBoard(const vector<vector<short>> &board, short rows, short columns) {
+void printShortBoard(const std::vector<std::vector<short>> &board, short rows, short columns) {
         for (short i = 0; i < rows; i++) {
                 for (short j = 0; j < columns; j++) {
-                        cout << board[i][j] << " ";
+                        std::cout << board[i][j] << " ";
                 }
-                cout << "\n";
+                std::cout << "\n";
         }
 }
 
 // Função para imprimir o tabuleiro reconstruído com base nas valorações do SAT solver
-void printReconstructedBoard(const vector<expr>& variables, model& z3_model, short rows, short columns) {
+void printReconstructedBoard(const std::vector<z3::expr>& variables, z3::model& z3_model, short rows, short columns) {
         size_t idx = 0;
         for (short i = 0; i < rows; i++) {
                 for (short j = 0; j < columns; j++) {
                         // Pega o valor da variável 
-                        expr value = z3_model.eval(variables[idx], true);  
-                        cout << (value.bool_value() == Z3_L_TRUE ? 1 : 0) << " ";  // 1 para verdadeiro, 0 para falso 
+                        z3::expr value = z3_model.eval(variables[idx], true);  
+                        std::cout << (value.bool_value() == Z3_L_TRUE ? 1 : 0) << " ";  // 1 para verdadeiro, 0 para falso 
                         idx++;
                 }
-                cout << "\n";
+                std::cout << "\n";
         }
 }
 
-set<short> generateNeighborsSet(short i, short j, short rows, short columns) {
+std::set<short> generateNeighborsSet(short i, short j, short rows, short columns) {
 
-        set<short> neighbors;
+        std::set<short> neighbors;
 
         // Define os offsets para as 8 posições possíveis
         const short offsets[8][2] = {
@@ -64,13 +64,13 @@ set<short> generateNeighborsSet(short i, short j, short rows, short columns) {
 
 // Cria a disjunção para um conjunto de variáveis
 // Se negate for true, cada variável será negada
-expr setDisjunction(context &z3_context, vector<short> &variables, bool negate) {
-        expr_vector var_vector(z3_context);  // Inicializa o vetor com a expressão
+z3::expr setDisjunction(z3::context &z3_context, std::vector<short> &variables, bool negate) {
+        z3::expr_vector var_vector(z3_context);  // Inicializa o vetor com a expressão
 
         // Itera sobre o conjunto de variáveis
         for (const auto &var : variables) {
                 // Gera uma variável boolean com o nome "x_{var}"
-                expr curr_var = z3_context.bool_const(("x_" + to_string(var)).c_str());
+                z3::expr curr_var = z3_context.bool_const(("x_" + std::to_string(var)).c_str());
 
                 if (negate) {
                         curr_var = !curr_var;
@@ -79,11 +79,11 @@ expr setDisjunction(context &z3_context, vector<short> &variables, bool negate) 
         }
 
         // Retorna a disjunção de todos os elementos do vetor
-        return mk_or(var_vector);
+        return z3::mk_or(var_vector);
 }
 
 
-vector<vector<short>> generateSubsets(const set<short>& input_set, size_t subset_size) {
+std::vector<std::vector<short>> generateSubsets(const std::set<short>& input_set, size_t subset_size) {
 
         // Se o tamanho do set de entrada for menor que o tamanho esperado dos 
         // subsets, então retorna um conjunto vazio
@@ -91,24 +91,23 @@ vector<vector<short>> generateSubsets(const set<short>& input_set, size_t subset
                 return {};
         }
 
-        vector<vector<short>> subsets;
-        vector<short> setVector(input_set.begin(), input_set.end());  // Converte conjunto pra vetor
+        std::vector<std::vector<short>> subsets;
+        std::vector<short> setVector(input_set.begin(), input_set.end());  // Converte conjunto pra vetor
         size_t n = setVector.size();
 
         // Gera todas as combinações para o tamanho desejado
-        vector<bool> combination(n);
-        fill(combination.begin(), combination.begin() + subset_size, true);
+        std::vector<bool> combination(n);
+        std::fill(combination.begin(), combination.begin() + subset_size, true);
 
         do {
-                vector<short> subset;
+                std::vector<short> subset;
                 for (size_t i = 0; i < n; ++i) {
                         if (combination[i]) {
                                 subset.push_back(setVector[i]);
                         }
                 }
                 subsets.push_back(subset);
-        } while (prev_permutation(combination.begin(), combination.end()));
+        } while (std::prev_permutation(combination.begin(), combination.end()));
 
         return subsets;
 }
-

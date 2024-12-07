@@ -10,6 +10,7 @@
 #include "encoding.hpp"
 
 int main() {
+
         auto start_time = std::chrono::high_resolution_clock::now();
         const int time_limit = 300; // Tempo limite, 5 minutos
 
@@ -26,9 +27,6 @@ int main() {
         z3::params z3_p(z3_context);
         z3_p.set("threads", std::thread::hardware_concurrency());
         z3_solver.set(z3_p);
-
-        unsigned threads = std::thread::hardware_concurrency();
-        std::cout << "Setting Z3 to use " << threads << " threads." << std::endl;
 
         z3_solver.set("timeout", static_cast<unsigned>(150000)); // 150 segundos de máximo para um check do z3
 

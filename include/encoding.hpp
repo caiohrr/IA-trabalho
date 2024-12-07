@@ -10,20 +10,17 @@
 #include "utils.hpp"
 #include "encoding.hpp"
 
-using namespace std;
-using namespace z3;
-
 // Construção das cláusulas de cada uma das situações:
 
+void loneliness(z3::solver &z3_solver, z3::context &z3_context, short x, std::set<short> &neighbors);
 
-void loneliness(solver &z3_solver, context &z3_context, short x, set<short> &neighbors);
+void overcrowding(z3::solver &z3_solver, z3::context &z3_context, short x, std::set<short> &neighbors);
 
-void overcrowding(solver &z3_solver, context &z3_context, short x, set<short> &neighbors);
+void stagnation(z3::solver &z3_solver, z3::context &z3_context, short x, std::set<short> &neighbors);
 
-void stagnation(solver &z3_solver, context &z3_context, short x, set<short> &neighbors);
+void preservation(z3::solver &z3_solver, z3::context &z3_context, short x, std::set<short> &neighbors);
 
-void preservation(solver &z3_solver, context &z3_context, short x, set<short> &neighbors);
-
-void life(solver &z3_solver, context &z3_context, short x, set<short> &neighbors);
+void life(z3::solver &z3_solver, z3::context &z3_context, short x, std::set<short> &neighbors);
 
 #endif
+
