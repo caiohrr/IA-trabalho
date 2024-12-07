@@ -1,3 +1,6 @@
 # Ignorando arquivos de saída
 *.out
 out
+
+#z3 ignorado
+z3
