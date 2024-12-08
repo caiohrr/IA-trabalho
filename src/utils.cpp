@@ -15,6 +15,7 @@ void readBoard(std::vector<std::vector<short>> &board, short rows, short columns
 }
 
 void printShortBoard(const std::vector<std::vector<short>> &board, short rows, short columns) {
+        std::cout << rows << " " << columns << "\n";
         for (short i = 0; i < rows; i++) {
                 for (short j = 0; j < columns; j++) {
                         std::cout << board[i][j] << " ";
